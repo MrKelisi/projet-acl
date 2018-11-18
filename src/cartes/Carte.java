@@ -30,11 +30,6 @@ public class Carte {
 
     @Override
     public String toString() {
-        return "Carte{" +
-                "libelle='" + getLibelle() +
-                ", valeur=" + getValeur() +
-                ", categorie=" + getCategorie() +
-                ", couleur=" + getCouleur() +
-                '}';
+        return getLibelle() + " " + getCategorie();
     }
 }

@@ -3,21 +3,34 @@ package jeu;
 import cartes.Carte;
 import cartes.Categorie;
 import cartes.figures.*;
+import highscores.Tableau;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Jeu {
 
-    private ArrayList<Carte> paquet = new ArrayList<>();
     private Random random = new Random();
+    private Tableau tableau;
+    private ArrayList<Carte> paquet;
+    private int tour;
+    private int score;
+    private int resultat;
+    private Carte c1, c2;
 
     public Jeu() {
+        tableau = new Tableau();
+        init();
+    }
+
+    private void init() {
+        paquet = new ArrayList<>();
+        tour = score = resultat = 0;
+        c1 = c2 = null;
 
         for(Categorie categorie : Categorie.values()) {
-
             for(int i = 7; i < 10; i++) {
-                paquet.add(new Carte(""+i, categorie));
+                paquet.add(new Carte(Integer.toString(i), categorie));
             }
             paquet.add(new Dix(categorie));
             paquet.add(new Valet(categorie));
@@ -27,37 +40,51 @@ public class Jeu {
         }
     }
 
-    public void demarrer() {
+    public int demarrer() {
+        init();
+        return tourSuivant();
+    }
 
-        int score = 0;
+    public int tourSuivant() {
+        if(++tour > 5)
+            throw new IndexOutOfBoundsException("Fin de la partie");
 
-        for(int i = 1; i <= 5; i++) {
-            System.out.println("TOUR " + i + " : ");
+        c1 = paquet.remove(random.nextInt(paquet.size()));
+        c2 = paquet.remove(random.nextInt(paquet.size()));
 
-            Carte c1 = paquet.remove(random.nextInt(paquet.size()));
-            Carte c2 = paquet.remove(random.nextInt(paquet.size()));
+        resultat = comparer(c1, c2);
+        score += resultat;
 
-            System.out.println(c1);
-            System.out.println(c2);
-
-            int resultat = comparer(c1, c2);
-            score += resultat;
-            System.out.println("Votre score : " + score + " (" + resultat + ")");
-            System.out.println("=======================");
-        }
+        return resultat;
     }
 
     private int comparer(Carte c1, Carte c2) {
-        int resultat = c1.getValeur() + c2.getValeur();
+        int res = c1.getValeur() + c2.getValeur();
 
         if(c1.getLibelle().equals(c2.getLibelle())) {
-            resultat = -resultat;
+            res = -res;
             if(c1.getCouleur().equals(c2.getCouleur())) {
-                resultat *= 2;
+                res *= 2;
             }
         }
 
+        return res;
+    }
+
+    public int tour() {
+        return tour;
+    }
+    public int score() {
+        return score;
+    }
+    public int resultat() {
         return resultat;
+    }
+    public Carte carte(int i) {
+        return (i%2 == 0) ? c1 : c2;
+    }
+    public Tableau tableau() {
+        return tableau;
     }
 
 }

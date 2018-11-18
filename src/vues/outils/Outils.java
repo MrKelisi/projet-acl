@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Outils {
 
-    public static void place(Frame frame, double Ox, double Oy, double largeur, double hauteur) {
+    public static void placer(Frame frame, double Ox, double Oy, double largeur, double hauteur) {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
         Dimension screenSize = toolkit.getScreenSize();
