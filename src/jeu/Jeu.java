@@ -10,6 +10,8 @@ import java.util.Random;
 
 public class Jeu {
 
+    public static final int MAX_TOURS = 5;
+
     private Random random = new Random();
     private Tableau tableau;
     private ArrayList<Carte> paquet;
@@ -46,14 +48,13 @@ public class Jeu {
     }
 
     public int tourSuivant() {
-        ++tour;
-
         if(estTermine())
             throw new IndexOutOfBoundsException("Fin de la partie");
 
         c1 = paquet.remove(random.nextInt(paquet.size()));
         c2 = paquet.remove(random.nextInt(paquet.size()));
 
+        ++tour;
         resultat = comparer(c1, c2);
         score += resultat;
 
@@ -74,7 +75,7 @@ public class Jeu {
     }
 
     public boolean estTermine() {
-        return tour > 5;
+        return tour >= MAX_TOURS;
     }
 
     public int tour() {

@@ -24,7 +24,7 @@ public class Tableau {
         scores.add(i, new Score(nom, score));
 
         if(scores.size() > MAX_SCORES)
-            scores.remove(scores.size());
+            scores.remove(scores.size() -1);
     }
 
     public int getSize() {
