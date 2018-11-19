@@ -72,9 +72,20 @@ public class VuePlateau extends JPanel implements Vue, ObserverBouton {
 
     private void refreshLabels() {
         resultat.setText("" + jeu.resultat());
+
         carte1.setText(jeu.carte(1).toString());
+        carte1.setForeground(jeu.carte(1).getCouleur());
+
         carte2.setText(jeu.carte(2).toString());
+        carte2.setForeground(jeu.carte(2).getCouleur());
+
         score.setText("Score : " + jeu.score());
+    }
+
+    public void saveScoreAndLeave() {
+        if(jeu.estTermine())
+            jeu.tableau().ajouter("Inconnu", jeu.score());
+        fenetre.chargerVue(fenetre.menu);
     }
 
     @Override
@@ -82,6 +93,6 @@ public class VuePlateau extends JPanel implements Vue, ObserverBouton {
         if(ob instanceof BoutonSuivant)
             tourSuivant();
         else if(ob instanceof BoutonMenu)
-            fenetre.chargerVue(fenetre.menu);
+            saveScoreAndLeave();
     }
 }

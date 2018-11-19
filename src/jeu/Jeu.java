@@ -46,7 +46,9 @@ public class Jeu {
     }
 
     public int tourSuivant() {
-        if(++tour > 5)
+        ++tour;
+
+        if(estTermine())
             throw new IndexOutOfBoundsException("Fin de la partie");
 
         c1 = paquet.remove(random.nextInt(paquet.size()));
@@ -69,6 +71,10 @@ public class Jeu {
         }
 
         return res;
+    }
+
+    public boolean estTermine() {
+        return tour > 5;
     }
 
     public int tour() {
