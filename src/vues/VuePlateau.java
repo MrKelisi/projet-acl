@@ -74,10 +74,10 @@ public class VuePlateau extends JPanel implements Vue, ObserverBouton {
         resultat.setText("" + jeu.resultat());
 
         carte1.setText(jeu.carte(1).toString());
-        carte1.setForeground(jeu.carte(1).getCouleur());
+        //carte1.setForeground(jeu.carte(1).getCouleur()); TODO: convertir les chaînes en couleur
 
         carte2.setText(jeu.carte(2).toString());
-        carte2.setForeground(jeu.carte(2).getCouleur());
+        //carte2.setForeground(jeu.carte(2).getCouleur());
 
         score.setText("Score : " + jeu.score());
     }

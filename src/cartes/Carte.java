@@ -1,35 +1,24 @@
 package cartes;
 
-import java.awt.*;
-
 public class Carte {
-
-    private String libelle;
     private Categorie categorie;
+    private Figure figure;
 
-    public Carte(String libelle, Categorie categorie) {
-        this.libelle = libelle;
+    public Carte(Figure figure, Categorie categorie) {
+        this.figure = figure;
         this.categorie = categorie;
-    }
-
-    public int getValeur() {
-        return 0;
     }
 
     public Categorie getCategorie() {
         return categorie;
     }
 
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public Color getCouleur() {
-        return (categorie.ordinal() % 2 == 0) ? Color.BLACK : Color.RED;
+    public Figure getFigure() {
+        return figure;
     }
 
     @Override
     public String toString() {
-        return getLibelle() + " " + getCategorie();
+        return figure + " " + categorie;
     }
 }

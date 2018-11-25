@@ -1,11 +1,10 @@
 package jeu;
 
 import cartes.Carte;
-import cartes.Categorie;
-import cartes.figures.*;
+import cartes.PaquetCartes;
+import cartes.PaquetCartesFrancais;
 import highscores.Tableau;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Jeu {
@@ -14,7 +13,7 @@ public class Jeu {
 
     private Random random = new Random();
     private Tableau tableau;
-    private ArrayList<Carte> paquet;
+    private PaquetCartes paquet;
     private int tour;
     private int score;
     private int resultat;
@@ -22,24 +21,14 @@ public class Jeu {
 
     public Jeu() {
         tableau = new Tableau();
-        init();
+        paquet = new PaquetCartesFrancais();
+        init(); //TODO: utile ? Sûrement rappelé par demarrer()
     }
 
     private void init() {
-        paquet = new ArrayList<>();
+        paquet.generer();
         tour = score = resultat = 0;
         c1 = c2 = null;
-
-        for(Categorie categorie : Categorie.values()) {
-            for(int i = 7; i < 10; i++) {
-                paquet.add(new Carte(Integer.toString(i), categorie));
-            }
-            paquet.add(new Dix(categorie));
-            paquet.add(new Valet(categorie));
-            paquet.add(new Dame(categorie));
-            paquet.add(new Roi(categorie));
-            paquet.add(new As(categorie));
-        }
     }
 
     public int demarrer() {
@@ -48,11 +37,12 @@ public class Jeu {
     }
 
     public int tourSuivant() {
-        if(estTermine())
+        if(estTermine()) {
             throw new IndexOutOfBoundsException("Fin de la partie");
+        }
 
-        c1 = paquet.remove(random.nextInt(paquet.size()));
-        c2 = paquet.remove(random.nextInt(paquet.size()));
+        c1 = paquet.tirerCarte();
+        c2 = paquet.tirerCarte();
 
         ++tour;
         resultat = comparer(c1, c2);
@@ -62,11 +52,11 @@ public class Jeu {
     }
 
     private int comparer(Carte c1, Carte c2) {
-        int res = c1.getValeur() + c2.getValeur();
+        int res = c1.getFigure().getPoints() + c2.getFigure().getPoints() ;
 
-        if(c1.getLibelle().equals(c2.getLibelle())) {
+        if(c1.getFigure().getNom().equals(c2.getFigure().getNom())) {
             res = -res;
-            if(c1.getCouleur().equals(c2.getCouleur())) {
+            if(c1.getCategorie().getCouleur().equals(c2.getCategorie().getCouleur())) {
                 res *= 2;
             }
         }
