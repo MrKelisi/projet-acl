@@ -16,7 +16,7 @@ public class PaquetCartesFrancais implements PaquetCartes {
     };
 
     private static final Categorie[] categories = {
-            new Categorie("pique", "noir"),
+            new Categorie("noir", "pique"),
             new Categorie("rouge", "coeur"),
             new Categorie("noir", "trèfle"),
             new Categorie("rouge", "carreau"),
