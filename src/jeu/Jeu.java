@@ -11,7 +11,6 @@ public class Jeu {
 
     public static final int MAX_TOURS = 5;
 
-    private Random random = new Random();
     private Tableau tableau;
     private PaquetCartes paquet;
     private int tour;
