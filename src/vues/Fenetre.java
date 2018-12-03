@@ -14,7 +14,7 @@ public class Fenetre extends Frame {
         super(titre);
 
         this.jeu = jeu;
-        Outils.placer(this, 0.1,0.1,0.8,0.8);
+        Outils.placer(this, 0.25,0.2,0.5,0.6);
         new EcouteurTerminaison(this);
 
         menu = new VueMenu(this);
