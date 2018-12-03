@@ -3,11 +3,9 @@ package vues;
 import java.awt.*;
 
 import jeu.Jeu;
-import vues.boutons.*;
 import vues.outils.*;
 
 public class Fenetre extends Frame {
-
     private Jeu jeu;
 
     protected Vue current, menu, plateau, highscores;

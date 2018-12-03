@@ -1,19 +1,15 @@
 package vues;
 
 import jeu.Jeu;
-import vues.boutons.Bouton;
-import vues.boutons.BoutonMenu;
-import vues.boutons.ObservableBouton;
-import vues.boutons.ObserverBouton;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VueHighscores extends JPanel implements Vue, ObserverBouton {
+public class VueHighscores extends JPanel implements Vue {
 
     private Fenetre fenetre;
     private Jeu jeu;
-    private Bouton menu;
+    private JButton menu;
 
     public VueHighscores(Fenetre fenetre, Jeu jeu) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -37,14 +33,10 @@ public class VueHighscores extends JPanel implements Vue, ObserverBouton {
             add(label);
         }
 
-        menu = new BoutonMenu();
-        menu.addObserver(this);
-        add(menu);
-    }
-
-    @Override
-    public void update(ObservableBouton ob, Object o) {
-        if(ob instanceof BoutonMenu)
+        menu = new JButton("Menu principal");
+        menu.addActionListener(event -> {
             fenetre.chargerVue(fenetre.menu);
+        });
+        add(menu);
     }
 }

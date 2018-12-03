@@ -1,18 +1,16 @@
 package vues;
 
 import jeu.Jeu;
-import vues.boutons.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferStrategy;
 
-public class VuePlateau extends JPanel implements Vue, ObserverBouton {
+public class VuePlateau extends JPanel implements Vue {
 
     private Fenetre fenetre;
     private Jeu jeu;
     private JLabel carte1, carte2, resultat, score;
-    private Bouton suivant, menu;
+    private JButton suivant, menu;
 
     public VuePlateau(Fenetre fenetre, Jeu jeu) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -30,12 +28,15 @@ public class VuePlateau extends JPanel implements Vue, ObserverBouton {
         add(resultat);
         add(score);
 
-        suivant = new BoutonSuivant();
-        suivant.addObserver(this);
-        add(suivant);
+        suivant = new JButton("Tour suivant");
+        suivant.addActionListener(event -> {
+            tourSuivant();
+        });
 
-        menu = new BoutonMenu();
-        menu.addObserver(this);
+        menu = new JButton("Menu principal");
+        menu.addActionListener(event -> {
+            saveScoreAndLeave();
+        });
         add(menu);
     }
 
@@ -46,6 +47,7 @@ public class VuePlateau extends JPanel implements Vue, ObserverBouton {
 
     @Override
     public void miseAJour() {
+        add(suivant);
         jeu.demarrer();
         refreshLabels();
 
@@ -86,17 +88,9 @@ public class VuePlateau extends JPanel implements Vue, ObserverBouton {
         }
     }
 
-    public void saveScoreAndLeave() {
+    private void saveScoreAndLeave() {
         if(jeu.estTermine())
             jeu.tableau().ajouter("Inconnu", jeu.score());
         fenetre.chargerVue(fenetre.menu);
-    }
-
-    @Override
-    public void update(ObservableBouton ob, Object o) {
-        if(ob instanceof BoutonSuivant)
-            tourSuivant();
-        else if(ob instanceof BoutonMenu)
-            saveScoreAndLeave();
     }
 }
