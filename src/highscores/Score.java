@@ -9,9 +9,13 @@ public class Score {
     private Date date;
 
     public Score(String nom, int score) {
+        this(nom, score, new Date());
+    }
+
+    public Score(String nom, int score, Date date) {
         this.nom = nom;
         this.score = score;
-        this.date = new Date();
+        this.date = date;
     }
 
     public String getNom() {

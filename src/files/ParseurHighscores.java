@@ -4,6 +4,8 @@ import highscores.Score;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -13,7 +15,7 @@ import java.util.regex.PatternSyntaxException;
 public class ParseurHighscores {
 
     private static final String HIGHSCORES = "files/highscores.txt";
-    private static final String PATTERN    = "^([A-Za-z0-9 ]+), (-?[0-9]+)$";
+    private static final String PATTERN    = "^(.+)\t(-?[0-9]+)\t([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2})$";
 
     public ParseurHighscores() {
     }
@@ -22,7 +24,22 @@ public class ParseurHighscores {
         final Pattern pattern = Pattern.compile(PATTERN);
         final Matcher matcher = pattern.matcher(ligne);
         matcher.find();
-        return new Score(matcher.group(1), Integer.valueOf(matcher.group(2)));
+
+        try {
+            return new Score(
+                    matcher.group(1),
+                    Integer.valueOf(matcher.group(2)),
+                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(matcher.group(3))
+            );
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+
+            return new Score(
+                    matcher.group(1),
+                    Integer.valueOf(matcher.group(2))
+            );
+        }
     }
 
 
