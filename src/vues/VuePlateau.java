@@ -21,7 +21,6 @@ public class VuePlateau extends JPanel implements Vue {
         carte2   = new JLabel("");
         resultat = new JLabel("");
         score    = new JLabel("");
-        refreshLabels();
 
         add(carte1);
         add(carte2);
@@ -38,6 +37,8 @@ public class VuePlateau extends JPanel implements Vue {
             saveScoreAndLeave();
         });
         add(menu);
+
+        refreshLabels();
     }
 
     @Override
@@ -48,6 +49,7 @@ public class VuePlateau extends JPanel implements Vue {
     @Override
     public void miseAJour() {
         add(suivant);
+
         jeu.demarrer();
         refreshLabels();
 
@@ -66,10 +68,12 @@ public class VuePlateau extends JPanel implements Vue {
     private void tourSuivant() {
         try {
             jeu.tourSuivant();
-        } catch (IndexOutOfBoundsException e) {
+        }
+        catch (IndexOutOfBoundsException e) {
             return;
         }
         refreshLabels();
+        repaint();
     }
 
     private void refreshLabels() {
@@ -83,14 +87,21 @@ public class VuePlateau extends JPanel implements Vue {
 
         score.setText("Score : " + jeu.score());
 
+
+
         if(jeu.estTermine()) {
             remove(suivant);
+            menu.setText("Menu principal");
+        }
+        else {
+            menu.setText("Abandonner");
         }
     }
 
     private void saveScoreAndLeave() {
-        if(jeu.estTermine())
+        if(jeu.estTermine()) {
             jeu.tableau().ajouter("Inconnu", jeu.score());
+        }
         fenetre.chargerVue(fenetre.menu);
     }
 }
