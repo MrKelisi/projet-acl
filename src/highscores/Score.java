@@ -24,8 +24,8 @@ public class Score {
     public int getScore() {
         return score;
     }
-    public String getDate() {
-        return date.toString();
+    public Date getDate() {
+        return date;
     }
 
     public String toString() {

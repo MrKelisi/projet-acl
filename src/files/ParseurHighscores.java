@@ -32,6 +32,7 @@ public class ParseurHighscores {
                     new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(matcher.group(3))
             );
         }
+
         catch (ParseException e) {
             e.printStackTrace();
 

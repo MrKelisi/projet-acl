@@ -1,10 +1,12 @@
 package highscores;
 
 import files.ParseurHighscores;
+import files.SauverHighscores;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Tableau {
+public class Tableau implements Iterable<Score> {
 
     private static final int MAX_SCORES = 10;
     private ArrayList<Score> scores;
@@ -23,8 +25,11 @@ public class Tableau {
         }
         scores.add(i, new Score(nom, score));
 
-        if(scores.size() > MAX_SCORES)
-            scores.remove(scores.size() -1);
+        if(scores.size() > MAX_SCORES) {
+            scores.remove(scores.size() - 1);
+        }
+
+        SauverHighscores.sauvegarder(this);
     }
 
     public int getSize() {
@@ -35,4 +40,8 @@ public class Tableau {
         return scores.get(i % scores.size()).toString();
     }
 
+    @Override
+    public Iterator<Score> iterator() {
+        return scores.iterator();
+    }
 }
