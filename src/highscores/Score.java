@@ -1,8 +1,11 @@
 package highscores;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Score {
+
+    private final static SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy à HH:mm:ss");
 
     private String nom;
     private int score;
@@ -26,6 +29,9 @@ public class Score {
     }
     public Date getDate() {
         return date;
+    }
+    public String getFormattedDate() {
+        return SDF.format(date);
     }
 
     public String toString() {

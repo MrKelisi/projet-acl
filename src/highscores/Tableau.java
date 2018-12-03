@@ -36,10 +36,6 @@ public class Tableau implements Iterable<Score> {
         return scores.size();
     }
 
-    public String getLigne(int i) {
-        return scores.get(i % scores.size()).toString();
-    }
-
     @Override
     public Iterator<Score> iterator() {
         return scores.iterator();
