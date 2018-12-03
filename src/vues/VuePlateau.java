@@ -80,6 +80,10 @@ public class VuePlateau extends JPanel implements Vue, ObserverBouton {
         //carte2.setForeground(jeu.carte(2).getCouleur());
 
         score.setText("Score : " + jeu.score());
+
+        if(jeu.estTermine()) {
+            remove(suivant);
+        }
     }
 
     public void saveScoreAndLeave() {
