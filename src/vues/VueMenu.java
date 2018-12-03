@@ -12,7 +12,7 @@ public class VueMenu extends JPanel implements Vue {
 
         jouer = new JButton("Jouer");
         jouer.addActionListener(event -> {
-            fenetre.chargerVue(fenetre.plateau);
+            fenetre.chargerVue(fenetre.pseudonyme);
         });
         add(jouer);
 

@@ -18,11 +18,13 @@ public class Jeu {
     private int score;
     private int resultat;
     private Carte c1, c2;
+    private String pseudonyme;
 
     public Jeu() {
         tableau = new Tableau();
         paquet = new PaquetCartesFrancais();
         init(); //TODO: utile ? Sûrement rappelé par demarrer()
+        pseudonyme = "Joueur";
     }
 
     private void init() {
@@ -84,4 +86,11 @@ public class Jeu {
         return tableau;
     }
 
+    public String getPseudonyme() {
+        return pseudonyme;
+    }
+
+    public void setPseudonyme(String pseudonyme) {
+        this.pseudonyme = pseudonyme;
+    }
 }

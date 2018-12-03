@@ -100,7 +100,7 @@ public class VuePlateau extends JPanel implements Vue {
 
     private void saveScoreAndLeave() {
         if(jeu.estTermine()) {
-            jeu.tableau().ajouter("Inconnu", jeu.score());
+            jeu.tableau().ajouter(jeu.getPseudonyme(), jeu.score());
         }
         fenetre.chargerVue(fenetre.menu);
     }

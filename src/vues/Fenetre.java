@@ -8,7 +8,7 @@ import vues.outils.*;
 public class Fenetre extends Frame {
     private Jeu jeu;
 
-    protected Vue current, menu, plateau, highscores;
+    protected Vue current, menu, plateau, highscores, pseudonyme;
 
     public Fenetre(String titre, Jeu jeu) {
         super(titre);
@@ -20,6 +20,7 @@ public class Fenetre extends Frame {
         menu = new VueMenu(this);
         plateau = new VuePlateau(this, jeu);
         highscores = new VueHighscores(this, jeu);
+        pseudonyme = new VuePseudonyme(this, jeu);
 
         chargerVue(menu);
     }
