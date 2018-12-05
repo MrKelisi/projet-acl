@@ -10,7 +10,7 @@
           GridPane.rowIndex="0"
           GridPane.columnSpan="2"
           textAlignment="CENTER"
-          style="-fx-font-size: 30px"/>
+          style="-fx-font-size: 24px"/>
 
     <TextField
             fx:id="pseudonyme"

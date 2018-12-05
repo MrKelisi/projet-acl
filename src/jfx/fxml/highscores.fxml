@@ -16,17 +16,17 @@
     <TableView fx:id="tableau"
                GridPane.rowIndex="1">
         <columns>
-            <TableColumn text="Nom">
+            <TableColumn text="Nom" prefWidth="200">
                 <cellValueFactory>
                     <PropertyValueFactory property="nom" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Score">
+            <TableColumn text="Score" prefWidth="100">
                 <cellValueFactory>
                     <PropertyValueFactory property="score" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Date">
+            <TableColumn text="Date" prefWidth="150">
                 <cellValueFactory>
                     <PropertyValueFactory property="formattedDate" />
                 </cellValueFactory>
