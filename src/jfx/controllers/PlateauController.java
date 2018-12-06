@@ -1,22 +1,22 @@
 package jfx.controllers;
 
+import cartes.Carte;
+import files.ResourcesLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import jeu.Jeu;
 import jfx.VueMenu;
+import javafx.scene.image.ImageView;
 
 public class PlateauController extends DefaultController {
 
     private VueMenu menu;
     private Jeu jeu;
     private String pseudonyme = "Joueur";
+    private ResourcesLoader resourcesLoader;
 
-    @FXML
-    private Text carte1;
-    @FXML
-    private Text carte2;
     @FXML
     private Text resultat;
     @FXML
@@ -25,7 +25,14 @@ public class PlateauController extends DefaultController {
     private Button toursuivant;
     @FXML
     private Button abandonner;
+    @FXML
+    private ImageView c1;
+    @FXML
+    private ImageView c2;
 
+    public PlateauController() {
+        resourcesLoader = ResourcesLoader.getInstance();
+    }
 
     public void setMenu(VueMenu menu) {
         this.menu = menu;
@@ -51,12 +58,17 @@ public class PlateauController extends DefaultController {
     }
 
     private void refreshScene() {
-        carte1.setText(jeu.carte(1).getFigure().getNom() + " " + jeu.carte(1).getCategorie().getNom());
-        carte2.setText(jeu.carte(2).getFigure().getNom() + " " + jeu.carte(2).getCategorie().getNom());
+        Carte ca1 = jeu.carte(1);
+        Carte ca2 = jeu.carte(2);
+
+        c1.setViewport(resourcesLoader.getCarte(ca1));
+        c2.setViewport(resourcesLoader.getCarte(ca2));
+
         resultat.setText((jeu.resultat() > 0 ? "+" : "") + jeu.resultat());
         score.setText("Votre score : " + jeu.score());
 
         toursuivant.setText("Tour suivant (" + jeu.tour() + ")");
+
 
         if(jeu.estTermine()) {
             toursuivant.setDisable(true);
@@ -66,6 +78,8 @@ public class PlateauController extends DefaultController {
 
     public void init() {
         jeu.demarrer();
+        c1.setImage(resourcesLoader.getPaquet());
+        c2.setImage(resourcesLoader.getPaquet());
         refreshScene();
 
         toursuivant.setDisable(false);
