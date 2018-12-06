@@ -3,6 +3,8 @@ package controleurs;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import modele.cartes.Carte;
 import javafx.animation.Timeline;
@@ -40,10 +42,10 @@ public class PlateauController extends DefaultController {
                 new KeyFrame(Duration.ZERO, new KeyValue(carte1.scaleYProperty(), 1)),
                 new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleXProperty(), 1)),
                 new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleYProperty(), 1)),
-                new KeyFrame(new Duration(120), new KeyValue(carte1.scaleXProperty(), 0)),
-                new KeyFrame(new Duration(120), new KeyValue(carte1.scaleYProperty(), 1.05)),
-                new KeyFrame(new Duration(120), new KeyValue(carte2.scaleXProperty(), 0)),
-                new KeyFrame(new Duration(120), new KeyValue(carte2.scaleYProperty(), 1.05))
+                new KeyFrame(new Duration(100), new KeyValue(carte1.scaleXProperty(), 0)),
+                new KeyFrame(new Duration(100), new KeyValue(carte1.scaleYProperty(), 1.08)),
+                new KeyFrame(new Duration(100), new KeyValue(carte2.scaleXProperty(), 0)),
+                new KeyFrame(new Duration(100), new KeyValue(carte2.scaleYProperty(), 1.08))
         );
         timeline.setAutoReverse(true);
         timeline.setCycleCount(2);
@@ -59,6 +61,7 @@ public class PlateauController extends DefaultController {
     protected void tourSuivant(ActionEvent event) {
 
         if(jeu.tirer()) {
+            timeline.stop();
             timeline.play();
             refreshScene();
 
@@ -73,15 +76,21 @@ public class PlateauController extends DefaultController {
         carte1.setViewport(getCarteCoords(jeu.carte(1)));
         carte2.setViewport(getCarteCoords(jeu.carte(2)));
 
-        resultat.setText((jeu.resultat() > 0 ? "+" : "") + jeu.resultat());
-        score.setText("Votre score : " + jeu.score());
+        if(jeu.resultat() > 0) {
+            resultat.setText("+" + jeu.resultat());
+            resultat.setFill(Color.INDIANRED);
+        } else {
+            resultat.setText(Integer.toString(jeu.resultat()));
+            resultat.setFill(Color.LIMEGREEN);
+        }
 
+        score.setText("Votre score : " + jeu.score());
         toursuivant.setText("Tour suivant (" + jeu.tour() + ")");
     }
 
     private Rectangle2D getCarteCoords(Carte carte) {
         System.out.println(carte);
-        return new Rectangle2D((carte.figure().ordinal() + 5) * 100, carte.categorie().ordinal() * 156, 100, 156);
+        return new Rectangle2D(carte.figure().ordinal() * 129, carte.categorie().ordinal() * 185, 129, 185);
     }
 
     public void demarrer() {

@@ -3,51 +3,58 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.FlowPane?>
 
 <GridPane fx:controller="controleurs.PlateauController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="20">
 
-    <ImageView fx:id="carte1"
-               GridPane.rowIndex="0"
-               GridPane.columnIndex="0">
-        <image>
-            <Image url="/vues/resources/cartes.png"/>
-        </image>
-    </ImageView>
+    <GridPane alignment="center"
+              hgap="15" vgap="30"
+              GridPane.rowIndex="0">
 
-    <ImageView fx:id="carte2"
-               GridPane.rowIndex="0"
-               GridPane.columnIndex="1">
-        <image>
-            <Image url="/vues/resources/cartes.png"/>
-        </image>
-    </ImageView>
+        <ImageView fx:id="carte1"
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="0">
+            <image>
+                <Image url="/vues/resources/cartes.png"/>
+            </image>
+        </ImageView>
 
-    <GridPane xmlns:fx="http://javafx.com/fxml"
-              alignment="center"
-              hgap="10" vgap="10"
-              GridPane.rowIndex="1"
-              GridPane.columnSpan="2">
+        <FlowPane prefWidth="50"
+                  alignment="CENTER"
+                  GridPane.rowIndex="0"
+                  GridPane.columnIndex="1">
+            <Text text="0" fx:id="resultat" style="-fx-font-size: 24"/>
+        </FlowPane>
 
-        <Text text="0"
-              fx:id="resultat"
-              GridPane.rowIndex="1"
-              GridPane.columnSpan="2"/>
+        <ImageView fx:id="carte2"
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="2">
+            <image>
+                <Image url="/vues/resources/cartes.png"/>
+            </image>
+        </ImageView>
 
-        <Text text="0"
-              fx:id="score"
-              GridPane.rowIndex="2"
-              GridPane.columnSpan="2"/>
+    </GridPane>
+
+    <FlowPane alignment="CENTER"
+              GridPane.rowIndex="1">
+        <Text text="0" fx:id="score" style="-fx-font-size: 17; -fx-fill: #0e61ff"/>
+    </FlowPane>
+
+    <GridPane alignment="center"
+              hgap="20" vgap="15"
+              GridPane.rowIndex="2">
 
         <Button text="Tour suivant"
                 fx:id="toursuivant"
                 onAction="#tourSuivant"
-                GridPane.rowIndex="3"
+                GridPane.rowIndex="0"
                 GridPane.columnIndex="0"/>
         <Button text="Abandonner"
                 fx:id="abandonner"
                 onAction="#menu"
-                GridPane.rowIndex="3"
+                GridPane.rowIndex="0"
                 GridPane.columnIndex="1"/>
 
     </GridPane>
