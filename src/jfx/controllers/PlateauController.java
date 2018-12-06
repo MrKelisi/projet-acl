@@ -1,6 +1,5 @@
 package jfx.controllers;
 
-import cartes.Carte;
 import files.ResourcesLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,9 +25,9 @@ public class PlateauController extends DefaultController {
     @FXML
     private Button abandonner;
     @FXML
-    private ImageView c1;
+    private ImageView carte1;
     @FXML
-    private ImageView c2;
+    private ImageView carte2;
 
     public PlateauController() {
         resourcesLoader = ResourcesLoader.getInstance();
@@ -58,17 +57,13 @@ public class PlateauController extends DefaultController {
     }
 
     private void refreshScene() {
-        Carte ca1 = jeu.carte(1);
-        Carte ca2 = jeu.carte(2);
-
-        c1.setViewport(resourcesLoader.getCarte(ca1));
-        c2.setViewport(resourcesLoader.getCarte(ca2));
+        carte1.setViewport(resourcesLoader.getCarteCoords(jeu.carte(1)));
+        carte2.setViewport(resourcesLoader.getCarteCoords(jeu.carte(2)));
 
         resultat.setText((jeu.resultat() > 0 ? "+" : "") + jeu.resultat());
         score.setText("Votre score : " + jeu.score());
 
         toursuivant.setText("Tour suivant (" + jeu.tour() + ")");
-
 
         if(jeu.estTermine()) {
             toursuivant.setDisable(true);
@@ -78,8 +73,8 @@ public class PlateauController extends DefaultController {
 
     public void init() {
         jeu.demarrer();
-        c1.setImage(resourcesLoader.getPaquet());
-        c2.setImage(resourcesLoader.getPaquet());
+        carte1.setImage(resourcesLoader.getPaquet());
+        carte2.setImage(resourcesLoader.getPaquet());
         refreshScene();
 
         toursuivant.setDisable(false);
