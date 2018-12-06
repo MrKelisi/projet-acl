@@ -4,8 +4,8 @@ import javafx.scene.Scene;
 import jeu.Jeu;
 
 public interface Vue {
-    int WIDTH = 800;
-    int HEIGHT = 600;
+    int WIDTH = 600;
+    int HEIGHT = 450;
 
     public Scene getScene();
     public Jeu getJeu();

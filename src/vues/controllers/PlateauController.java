@@ -1,10 +1,14 @@
 package vues.controllers;
 
 import files.ResourcesLoader;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import jeu.Jeu;
 import vues.VueMenu;
 import javafx.scene.image.ImageView;
@@ -13,6 +17,7 @@ public class PlateauController extends DefaultController {
 
     private VueMenu menu;
     private Jeu jeu;
+    private Timeline timeline;
     private String pseudonyme = "Joueur";
 
     @FXML
@@ -49,6 +54,7 @@ public class PlateauController extends DefaultController {
     @FXML
     protected void prochainTour(ActionEvent event) {
         jeu.tourSuivant();
+        timeline.play();
         refreshScene();
     }
 
@@ -69,9 +75,21 @@ public class PlateauController extends DefaultController {
 
     public void init() {
         jeu.demarrer();
-        carte1.setImage(ResourcesLoader.getPaquet());
-        carte2.setImage(ResourcesLoader.getPaquet());
         refreshScene();
+
+        timeline = new Timeline();
+        timeline.getKeyFrames().addAll(
+                new KeyFrame(Duration.ZERO, new KeyValue(carte1.scaleXProperty(), 1)),
+                new KeyFrame(Duration.ZERO, new KeyValue(carte1.scaleYProperty(), 1)),
+                new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleXProperty(), 1)),
+                new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleYProperty(), 1)),
+                new KeyFrame(new Duration(120), new KeyValue(carte1.scaleXProperty(), 0)),
+                new KeyFrame(new Duration(120), new KeyValue(carte1.scaleYProperty(), 1.05)),
+                new KeyFrame(new Duration(120), new KeyValue(carte2.scaleXProperty(), 0)),
+                new KeyFrame(new Duration(120), new KeyValue(carte2.scaleYProperty(), 1.05))
+        );
+        timeline.setAutoReverse(true);
+        timeline.setCycleCount(2);
 
         toursuivant.setDisable(false);
         toursuivant.setText("Tour suivant (1)");
