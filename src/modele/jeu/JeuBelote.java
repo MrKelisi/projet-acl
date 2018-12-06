@@ -97,6 +97,10 @@ public class JeuBelote implements Jeu {
         resultat = res;
         score   += res;
 
+        if(estTermine()) {
+            tableau.ajouter(pseudonyme, score);
+        }
+
         return true;
     }
 

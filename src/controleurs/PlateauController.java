@@ -52,9 +52,6 @@ public class PlateauController extends DefaultController {
 
     @FXML
     protected void menu(ActionEvent event) {
-        if(jeu.estTermine()) {
-            jeu.tableau().ajouter(jeu.pseudonyme(), jeu.score());
-        }
         vue.changerVue("menu");
     }
 
