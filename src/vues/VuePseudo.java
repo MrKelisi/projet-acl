@@ -1,8 +1,8 @@
-package jfx;
+package vues;
 
 import javafx.stage.Stage;
 import jeu.Jeu;
-import jfx.controllers.PseudoController;
+import vues.controllers.PseudoController;
 
 public class VuePseudo extends VueDefault {
 

@@ -1,11 +1,11 @@
-package jfx.controllers;
+package vues.controllers;
 
 import highscores.Score;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import jeu.Jeu;
-import jfx.VueMenu;
+import vues.VueMenu;
 
 public class HighscoresController extends DefaultController {
 

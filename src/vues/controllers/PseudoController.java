@@ -1,10 +1,10 @@
-package jfx.controllers;
+package vues.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import jfx.VueMenu;
-import jfx.VuePlateau;
+import vues.VueMenu;
+import vues.VuePlateau;
 
 public class PseudoController extends DefaultController {
 

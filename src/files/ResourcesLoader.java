@@ -32,20 +32,18 @@ public class ResourcesLoader {
         return paquet;
     }
 
-    public Rectangle2D getCarteCoords(Carte carte) {
+    public static Rectangle2D getCarteCoords(Carte carte) {
 
-        String categ = carte.getCategorie().getNom();
-        String fig = carte.getFigure().getNom();
         int row, column;
 
-        switch(categ) {
+        switch(carte.getCategorie().getNom()) {
             case "trèfle": row = 0; break;
             case "carreau": row = 1; break;
             case "coeur": row = 2; break;
             case "pique": row = 3; break;
             default: row = 0;
         }
-        switch(fig) {
+        switch(carte.getFigure().getNom()) {
             case "7": column = 0; break;
             case "8": column = 1; break;
             case "9": column = 2; break;

@@ -1,46 +1,26 @@
 package vues;
 
-import highscores.Score;
+import javafx.stage.Stage;
 import jeu.Jeu;
+import vues.controllers.HighscoresController;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+public class VueHighscores extends VueDefault {
 
-public class VueHighscores extends JPanel implements Vue {
+    private HighscoresController controller;
 
-    private Jeu jeu;
-    private DefaultTableModel model;
+    public VueHighscores(Stage primaryStage, Jeu jeu) {
+        super("fxml/highscores.fxml", jeu);
 
-    public VueHighscores(Fenetre fenetre, Jeu jeu) {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.jeu = jeu;
-
-        this.model = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        model.addColumn("Nom");
-        model.addColumn("Score");
-        model.addColumn("Date");
-        add(new JScrollPane(new JTable(model)));
-
-
-        JButton menu = new JButton("Menu principal");
-        menu.addActionListener(event -> {
-            fenetre.chargerVue(fenetre.menu);
-        });
-        add(menu);
+        controller = loader.getController();
+        controller.setPrimaryScene(primaryStage);
     }
 
-    @Override
-    public void miseAJour() {
-
-        model.setRowCount(0);
-
-        for(Score sc : jeu.tableau()) {
-            model.addRow(new Object[]{ sc.getNom(), sc.getScore(), sc.getFormattedDate() });
-        }
+    public void setMenu(VueMenu vue) {
+        controller.setMenu(vue);
     }
+
+    public void chargerTableau() {
+        controller.charger();
+    }
+
 }

@@ -1,9 +1,9 @@
-package jfx.controllers;
+package vues.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import jfx.VueHighscores;
-import jfx.VuePseudo;
+import vues.VueHighscores;
+import vues.VuePseudo;
 
 public class MenuController extends DefaultController {
 

@@ -1,29 +1,26 @@
 package vues;
 
-import javax.swing.*;
+import javafx.stage.Stage;
+import jeu.Jeu;
+import vues.controllers.MenuController;
 
-public class VueMenu extends JPanel implements Vue {
+public class VueMenu extends VueDefault {
 
-    public VueMenu(Fenetre fenetre) {
-        JButton jouer = new JButton("Jouer");
-        jouer.addActionListener(event -> {
-            fenetre.chargerVue(fenetre.pseudonyme);
-        });
-        add(jouer);
+    private MenuController controller;
 
-        JButton highscores = new JButton("Meilleurs scores");
-        highscores.addActionListener(event -> {
-            fenetre.chargerVue(fenetre.highscores);
-        });
-        add(highscores);
+    public VueMenu(Stage primaryStage, Jeu jeu) {
+        super("fxml/menu.fxml", jeu);
 
-        JButton quitter = new JButton("Quitter");
-        quitter.addActionListener(event -> {
-            System.exit(0);
-        });
-        add(quitter);
+        controller = loader.getController();
+        controller.setPrimaryScene(primaryStage);
     }
 
-    @Override
-    public void miseAJour() {}
+    public void setPseudo(VuePseudo vue) {
+        controller.setPseudo(vue);
+    }
+
+    public void setHighscores(VueHighscores vue) {
+        controller.setHighscores(vue);
+    }
+
 }

@@ -1,4 +1,4 @@
-package jfx.controllers;
+package vues.controllers;
 
 import files.ResourcesLoader;
 import javafx.event.ActionEvent;
@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import jeu.Jeu;
-import jfx.VueMenu;
+import vues.VueMenu;
 import javafx.scene.image.ImageView;
 
 public class PlateauController extends DefaultController {
@@ -14,8 +14,11 @@ public class PlateauController extends DefaultController {
     private VueMenu menu;
     private Jeu jeu;
     private String pseudonyme = "Joueur";
-    private ResourcesLoader resourcesLoader;
 
+    @FXML
+    private ImageView carte1;
+    @FXML
+    private ImageView carte2;
     @FXML
     private Text resultat;
     @FXML
@@ -24,14 +27,7 @@ public class PlateauController extends DefaultController {
     private Button toursuivant;
     @FXML
     private Button abandonner;
-    @FXML
-    private ImageView carte1;
-    @FXML
-    private ImageView carte2;
 
-    public PlateauController() {
-        resourcesLoader = ResourcesLoader.getInstance();
-    }
 
     public void setMenu(VueMenu menu) {
         this.menu = menu;
@@ -57,8 +53,8 @@ public class PlateauController extends DefaultController {
     }
 
     private void refreshScene() {
-        carte1.setViewport(resourcesLoader.getCarteCoords(jeu.carte(1)));
-        carte2.setViewport(resourcesLoader.getCarteCoords(jeu.carte(2)));
+        carte1.setViewport(ResourcesLoader.getCarteCoords(jeu.carte(1)));
+        carte2.setViewport(ResourcesLoader.getCarteCoords(jeu.carte(2)));
 
         resultat.setText((jeu.resultat() > 0 ? "+" : "") + jeu.resultat());
         score.setText("Votre score : " + jeu.score());
@@ -73,8 +69,8 @@ public class PlateauController extends DefaultController {
 
     public void init() {
         jeu.demarrer();
-        carte1.setImage(resourcesLoader.getPaquet());
-        carte2.setImage(resourcesLoader.getPaquet());
+        carte1.setImage(ResourcesLoader.getPaquet());
+        carte2.setImage(ResourcesLoader.getPaquet());
         refreshScene();
 
         toursuivant.setDisable(false);

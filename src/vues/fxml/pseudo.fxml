@@ -3,7 +3,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.TextField?>
 
-<GridPane fx:controller="jfx.controllers.PseudoController"
+<GridPane fx:controller="vues.controllers.PseudoController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
 
     <Text text="Choisissez un pseudonyme :"

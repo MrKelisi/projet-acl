@@ -1,4 +1,4 @@
-package jfx.controllers;
+package vues.controllers;
 
 import javafx.stage.Stage;
 
