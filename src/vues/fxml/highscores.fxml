@@ -1,0 +1,44 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<GridPane fx:controller="vues.controllers.HighscoresController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <Text text="Tableau des scores"
+          GridPane.rowIndex="0"
+          textAlignment="CENTER"
+          style="-fx-font-size: 30px"/>
+
+    <TableView fx:id="tableau"
+               GridPane.rowIndex="1">
+        <columns>
+            <TableColumn text="Nom" prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nom" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Score" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="score" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Date" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="formattedDate" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+
+        <items>
+        </items>
+    </TableView>
+
+    <Button text="Menu principal"
+            onAction="#menu"
+            GridPane.rowIndex="2"/>
+
+</GridPane>

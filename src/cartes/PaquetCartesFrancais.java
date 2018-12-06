@@ -7,8 +7,8 @@ public class PaquetCartesFrancais implements PaquetCartes {
     private static final Figure[] figures = {
             new Figure("A", 11),
             new Figure("K", 4),
-            new Figure("D", 3),
-            new Figure("V", 2),
+            new Figure("Q", 3),
+            new Figure("J", 2),
             new Figure("10", 10),
             new Figure("9", 0),
             new Figure("8", 0),
