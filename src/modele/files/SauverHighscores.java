@@ -1,7 +1,7 @@
-package files;
+package modele.files;
 
-import highscores.Score;
-import highscores.Tableau;
+import modele.highscores.Score;
+import modele.highscores.Tableau;
 
 import java.io.File;
 import java.io.PrintWriter;

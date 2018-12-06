@@ -1,26 +1,12 @@
 package vues;
 
-import javafx.stage.Stage;
-import jeu.Jeu;
-import vues.controllers.MenuController;
+import modele.jeu.JeuBelote;
 
 public class VueMenu extends VueDefault {
 
-    private MenuController controller;
-
-    public VueMenu(Stage primaryStage, Jeu jeu) {
+    public VueMenu(JeuBelote jeu) {
         super("fxml/menu.fxml", jeu);
 
-        controller = loader.getController();
-        controller.setPrimaryScene(primaryStage);
-    }
-
-    public void setPseudo(VuePseudo vue) {
-        controller.setPseudo(vue);
-    }
-
-    public void setHighscores(VueHighscores vue) {
-        controller.setHighscores(vue);
     }
 
 }

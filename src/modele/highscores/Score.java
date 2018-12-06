@@ -1,4 +1,4 @@
-package highscores;
+package modele.highscores;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

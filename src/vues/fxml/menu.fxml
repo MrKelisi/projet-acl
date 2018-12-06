@@ -2,7 +2,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:controller="vues.controllers.MenuController"
+<GridPane fx:controller="controleurs.MenuController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
 
     <Text text="Projet d'ACL"

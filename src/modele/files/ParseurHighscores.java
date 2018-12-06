@@ -1,6 +1,6 @@
-package files;
+package modele.files;
 
-import highscores.Score;
+import modele.highscores.Score;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 public class ParseurHighscores {
 

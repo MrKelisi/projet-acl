@@ -1,29 +1,18 @@
 package vues;
 
-import javafx.stage.Stage;
-import jeu.Jeu;
-import vues.controllers.PlateauController;
+import modele.jeu.JeuBelote;
+import controleurs.PlateauController;
 
 public class VuePlateau extends VueDefault {
 
-    private PlateauController controller;
-
-    public VuePlateau(Stage primaryStage, Jeu jeu) {
+    public VuePlateau(JeuBelote jeu) {
         super("fxml/plateau.fxml", jeu);
 
-        controller = loader.getController();
-        controller.setPrimaryScene(primaryStage);
     }
 
-    public void setMenu(VueMenu vue) {
-        controller.setMenu(vue);
-    }
-
-    public void demarrerJeu() {
-        controller.init();
-    }
-    public void setPseudonyme(String pseudonyme) {
-        controller.setPseudonyme(pseudonyme);
+    @Override
+    public void init() {
+        ((PlateauController) controller).demarrer();
     }
 
 }

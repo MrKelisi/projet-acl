@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<GridPane fx:controller="vues.controllers.HighscoresController"
+<GridPane fx:controller="controleurs.HighscoresController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
 
     <Text text="Tableau des scores"

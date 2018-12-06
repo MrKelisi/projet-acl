@@ -1,7 +1,7 @@
-package highscores;
+package modele.highscores;
 
-import files.ParseurHighscores;
-import files.SauverHighscores;
+import modele.files.ParseurHighscores;
+import modele.files.SauverHighscores;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,10 +30,6 @@ public class Tableau implements Iterable<Score> {
         }
 
         SauverHighscores.sauvegarder(this);
-    }
-
-    public int getSize() {
-        return scores.size();
     }
 
     @Override

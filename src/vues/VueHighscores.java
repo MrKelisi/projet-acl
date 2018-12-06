@@ -1,26 +1,18 @@
 package vues;
 
-import javafx.stage.Stage;
-import jeu.Jeu;
-import vues.controllers.HighscoresController;
+import modele.jeu.JeuBelote;
+import controleurs.HighscoresController;
 
 public class VueHighscores extends VueDefault {
 
-    private HighscoresController controller;
-
-    public VueHighscores(Stage primaryStage, Jeu jeu) {
+    public VueHighscores(JeuBelote jeu) {
         super("fxml/highscores.fxml", jeu);
 
-        controller = loader.getController();
-        controller.setPrimaryScene(primaryStage);
     }
 
-    public void setMenu(VueMenu vue) {
-        controller.setMenu(vue);
-    }
-
-    public void chargerTableau() {
-        controller.charger();
+    @Override
+    public void init() {
+        ((HighscoresController) controller).chargerTableau();
     }
 
 }
