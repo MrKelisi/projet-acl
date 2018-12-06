@@ -38,17 +38,16 @@ public class PlateauController extends DefaultController {
     public void initialize() {
         timeline = new Timeline();
         timeline.getKeyFrames().addAll(
-                new KeyFrame(Duration.ZERO, new KeyValue(carte1.scaleXProperty(), 1)),
-                new KeyFrame(Duration.ZERO, new KeyValue(carte1.scaleYProperty(), 1)),
-                new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleXProperty(), 1)),
-                new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleYProperty(), 1)),
-                new KeyFrame(new Duration(100), new KeyValue(carte1.scaleXProperty(), 0)),
-                new KeyFrame(new Duration(100), new KeyValue(carte1.scaleYProperty(), 1.08)),
-                new KeyFrame(new Duration(100), new KeyValue(carte2.scaleXProperty(), 0)),
-                new KeyFrame(new Duration(100), new KeyValue(carte2.scaleYProperty(), 1.08))
+                new KeyFrame(Duration.ZERO, new KeyValue(carte1.scaleXProperty(), 0)),
+                new KeyFrame(Duration.ZERO, new KeyValue(carte1.scaleYProperty(), 1.1)),
+                new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleXProperty(), 0)),
+                new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleYProperty(), 1.1)),
+                new KeyFrame(new Duration(120), new KeyValue(carte1.scaleXProperty(), 1)),
+                new KeyFrame(new Duration(120), new KeyValue(carte1.scaleYProperty(), 1)),
+                new KeyFrame(new Duration(120), new KeyValue(carte2.scaleXProperty(), 1)),
+                new KeyFrame(new Duration(120), new KeyValue(carte2.scaleYProperty(), 1))
         );
-        timeline.setAutoReverse(true);
-        timeline.setCycleCount(2);
+        timeline.setCycleCount(1);
     }
 
 
@@ -96,6 +95,7 @@ public class PlateauController extends DefaultController {
     public void demarrer() {
         jeu.demarrer();
         jeu.tirer();
+        timeline.play();
         refreshScene();
 
         toursuivant.setDisable(false);
