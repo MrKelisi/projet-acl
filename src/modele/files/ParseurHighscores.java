@@ -4,6 +4,7 @@ import modele.highscores.Score;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,7 +49,17 @@ public class ParseurHighscores {
         ArrayList<Score> scores = new ArrayList<>();
 
         try {
-            Scanner sc = new Scanner(new File(HIGHSCORES));
+            File fichierScores = new File(HIGHSCORES);
+            if(!fichierScores.exists()) {
+                try {
+                    fichierScores.createNewFile();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                    return scores;
+                }
+            }
+            Scanner sc = new Scanner(fichierScores);
             while(sc.hasNextLine()) {
                 try {
                     scores.add(lire(sc.nextLine()));
