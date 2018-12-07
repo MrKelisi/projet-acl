@@ -6,6 +6,7 @@ import modele.files.SauverHighscores;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+//TODO: doit être un singleton
 public class Tableau implements Iterable<Score> {
 
     private static final int MAX_SCORES = 10;
