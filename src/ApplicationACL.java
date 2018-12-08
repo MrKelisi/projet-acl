@@ -3,7 +3,7 @@ import javafx.stage.Stage;
 import modele.jeu.JeuBelote;
 import vues.*;
 
-public class Main extends Application {
+public class ApplicationACL extends Application {
     public static void main(String[] args) {
         launch(args);
     }
