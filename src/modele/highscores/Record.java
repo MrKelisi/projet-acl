@@ -15,6 +15,7 @@ public class Record {
 
     /**
      * Crée un nouveau score à la date d'exécution
+     * @param joueur Joueur
      * @param score Record du joueur dans la partie
      */
     public Record(Joueur joueur, int score) {
@@ -23,6 +24,7 @@ public class Record {
 
     /**
      * Crée un score précédemment réalisé à la Date date
+     * @param joueur Joueur
      * @param score Record du joueur dans la partie
      * @param date Date du score
      */

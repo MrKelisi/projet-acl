@@ -18,7 +18,7 @@ public class Fenetre {
     }
 
     /**
-     * Ajoute une vue à la fenêtre et l'associe à un getNom
+     * Ajoute une vue à la fenêtre et l'associe à un nom
      * @param nom Nom usuelle de la vue
      * @param vue Une vue de la fenêtre
      */
