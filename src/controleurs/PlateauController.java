@@ -83,19 +83,19 @@ public class PlateauController extends DefaultController {
      * Rafraichi la scène
      */
     private void refreshScene() {
-        carte1.setViewport( getCarteCoords(JoueurActif.carte(1)) );
-        carte2.setViewport( getCarteCoords(JoueurActif.carte(2)) );
+        carte1.setViewport( getCarteCoords(JoueurActif.getInstance().getCarte1()) );
+        carte2.setViewport( getCarteCoords(JoueurActif.getInstance().getCarte2()) );
 
-        if(JoueurActif.resultat() > 0) {
-            resultat.setText("+" + JoueurActif.resultat());
+        if(JoueurActif.getInstance().resultat() > 0) {
+            resultat.setText("+" + JoueurActif.getInstance().resultat());
             resultat.setFill(Color.INDIANRED);
         } else {
-            resultat.setText(Integer.toString(JoueurActif.resultat()));
+            resultat.setText(Integer.toString(JoueurActif.getInstance().resultat()));
             resultat.setFill(Color.LIMEGREEN);
         }
 
-        score.setText("Votre score : " + JoueurActif.score());
-        tour.setText("Tour n°" + JoueurActif.tour());
+        score.setText("Votre score : " + JoueurActif.getInstance().score());
+        tour.setText("Tour n°" + JoueurActif.getInstance().tour());
     }
 
     /**

@@ -46,9 +46,9 @@ public class JeuBelote implements Jeu {
             return false;
         }
 
-        JoueurActif.tirer(cartes);
-        Carte carte1 = JoueurActif.carte(1);
-        Carte carte2 = JoueurActif.carte(2);
+        JoueurActif.getInstance().tirer(cartes);
+        Carte carte1 = JoueurActif.getInstance().getCarte1();
+        Carte carte2 = JoueurActif.getInstance().getCarte2();
 
         int res = carte1.valeur() + carte2.valeur();
         if(carte1.figure().equals(carte2.figure())) {
@@ -58,17 +58,17 @@ public class JeuBelote implements Jeu {
             }
         }
 
-        JoueurActif.setResultat(res);
+        JoueurActif.getInstance().setResultat(res);
         return true;
     }
 
     @Override
     public boolean estTermine() {
-        return (JoueurActif.tour() >= MAX_TOURS);
+        return (JoueurActif.getInstance().tour() >= MAX_TOURS);
     }
 
     @Override
     public void sauvegarder() {
-        Tableau.getInstance().ajouter(JoueurActif.get(), JoueurActif.score());
+        Tableau.getInstance().ajouter(JoueurActif.getInstance(), JoueurActif.getInstance().score());
     }
 }
