@@ -7,11 +7,11 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import modele.cartes.Carte;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
+import modele.joueurs.JoueurActif;
 
 import javax.annotation.PostConstruct;
 
@@ -56,12 +56,12 @@ public class PlateauController extends DefaultController {
 
 
     @FXML
-    protected void afficherMenuPrincipal(ActionEvent event) {
+    protected void afficherMenuPrincipal() {
         fenetre.setVue("menu");
     }
 
     @FXML
-    protected void piocherCartes(ActionEvent event) {
+    protected void piocherCartes() {
 
         if(jeu.estTermine()) {
             jeu.sauvegarder();
@@ -83,19 +83,19 @@ public class PlateauController extends DefaultController {
      * Rafraichi la scène
      */
     private void refreshScene() {
-        carte1.setViewport(getCarteCoords(jeu.carte(1)));
-        carte2.setViewport(getCarteCoords(jeu.carte(2)));
+        carte1.setViewport( getCarteCoords(JoueurActif.carte(1)) );
+        carte2.setViewport( getCarteCoords(JoueurActif.carte(2)) );
 
-        if(jeu.resultat() > 0) {
-            resultat.setText("+" + jeu.resultat());
+        if(JoueurActif.resultat() > 0) {
+            resultat.setText("+" + JoueurActif.resultat());
             resultat.setFill(Color.INDIANRED);
         } else {
-            resultat.setText(Integer.toString(jeu.resultat()));
+            resultat.setText(Integer.toString(JoueurActif.resultat()));
             resultat.setFill(Color.LIMEGREEN);
         }
 
-        score.setText("Votre score : " + jeu.score());
-        tour.setText("Tour n°" + jeu.tour());
+        score.setText("Votre score : " + JoueurActif.score());
+        tour.setText("Tour n°" + JoueurActif.tour());
     }
 
     /**
@@ -111,10 +111,7 @@ public class PlateauController extends DefaultController {
     public void init() {
         super.init();
 
-        jeu.demarrer();
-        jeu.tirer();
-        timeline.play();
-        refreshScene();
+        piocherCartes();
 
         toursuivant.setText("Tour suivant");
         abandonner.setText("Abandonner");

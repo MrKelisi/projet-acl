@@ -1,22 +1,21 @@
 package controleurs;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class MenuController extends DefaultController {
 
     @FXML
-    protected void afficherFormulairePseudonyme(ActionEvent event) {
+    protected void afficherFormulairePseudonyme() {
         fenetre.setVue("pseudo");
     }
 
     @FXML
-    protected void afficherTableauScores(ActionEvent event) {
+    protected void afficherTableauScores() {
         fenetre.setVue("highscores");
     }
 
     @FXML
-    protected void quitter(ActionEvent event) {
+    protected void quitter() {
         fenetre.fermer();
     }
 }

@@ -1,8 +1,8 @@
 package controleurs;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import modele.joueurs.JoueurActif;
 
 public class PseudoController extends DefaultController {
 
@@ -10,13 +10,13 @@ public class PseudoController extends DefaultController {
     private TextField pseudonyme;
 
     @FXML
-    protected void afficherMenuPrincipal(ActionEvent event) {
+    protected void afficherMenuPrincipal() {
         fenetre.setVue("menu");
     }
 
     @FXML
-    protected void afficherPlateau(ActionEvent event) {
-        jeu.setPseudonyme(pseudonyme.getText());
+    protected void afficherPlateau() {
+        JoueurActif.set(pseudonyme.getText());
         fenetre.setVue("plateau");
     }
 

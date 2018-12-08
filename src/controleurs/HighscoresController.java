@@ -1,7 +1,6 @@
 package controleurs;
 
 import modele.highscores.Score;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import modele.highscores.Tableau;
@@ -12,7 +11,7 @@ public class HighscoresController extends DefaultController {
     private TableView tableau;
 
     @FXML
-    protected void afficherMenuPrincipal(ActionEvent event) {
+    protected void afficherMenuPrincipal() {
         fenetre.setVue("menu");
     }
 
