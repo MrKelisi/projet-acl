@@ -24,7 +24,7 @@ public class Fenetre {
     public void setVue(String nom) {
         try {
             Vue vue = vues.get(nom);
-            vue.init();
+            vue.getControleur().init();
             stage.setScene(vue.getScene());
         } catch (Exception e) {
             e.printStackTrace();

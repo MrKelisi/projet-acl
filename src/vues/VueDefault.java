@@ -9,7 +9,7 @@ import modele.jeu.JeuBelote;
 
 import java.util.HashMap;
 
-public abstract class VueDefault implements Vue {
+public class VueDefault implements Vue {
 
     private FXMLLoader loader;
     private Parent root;
@@ -18,7 +18,7 @@ public abstract class VueDefault implements Vue {
     protected DefaultController controller;
     protected Fenetre fenetre;
 
-    protected VueDefault(String chemin, JeuBelote jeu, Fenetre fenetre) {
+    public VueDefault(String chemin, JeuBelote jeu, Fenetre fenetre) {
         try {
             loader = new FXMLLoader(getClass().getResource(chemin));
             root   = loader.load();
@@ -39,5 +39,7 @@ public abstract class VueDefault implements Vue {
     }
 
     @Override
-    public void init() {}
+    public DefaultController getControleur() {
+        return controller;
+    }
 }

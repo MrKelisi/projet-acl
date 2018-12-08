@@ -15,10 +15,10 @@ public class Main extends Application {
         Fenetre fenetre = new Fenetre(primaryStage);
         JeuBelote jeu     = new JeuBelote();
 
-        fenetre.addVue("menu",       new VueMenu(jeu, fenetre));
-        fenetre.addVue("highscores", new VueHighscores(jeu, fenetre));
-        fenetre.addVue("pseudo",     new VuePseudo(jeu, fenetre));
-        fenetre.addVue("plateau",    new VuePlateau(jeu, fenetre));
+        fenetre.addVue("menu",       new VueDefault("fxml/menu.fxml", jeu, fenetre));
+        fenetre.addVue("highscores", new VueDefault("fxml/highscores.fxml", jeu, fenetre));
+        fenetre.addVue("pseudo",     new VueDefault("fxml/pseudo.fxml", jeu, fenetre));
+        fenetre.addVue("plateau",    new VueDefault("fxml/plateau.fxml", jeu, fenetre));
 
         primaryStage.setTitle("Projet ACL");
         fenetre.setVue("menu");

@@ -4,7 +4,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.util.Duration;
 import modele.cartes.Carte;
 import javafx.animation.Timeline;
@@ -92,7 +91,6 @@ public class PlateauController extends DefaultController {
     }
 
     private Rectangle2D getCarteCoords(Carte carte) {
-        System.out.println(carte);
         return new Rectangle2D(carte.figure().ordinal() * 129, carte.categorie().ordinal() * 185, 129, 185);
     }
 
@@ -106,4 +104,9 @@ public class PlateauController extends DefaultController {
         abandonner.setText("Abandonner");
     }
 
+    @Override
+    public void init() {
+        super.init();
+        demarrer();
+    }
 }

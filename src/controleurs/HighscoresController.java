@@ -23,4 +23,9 @@ public class HighscoresController extends DefaultController {
         }
     }
 
+    @Override
+    public void init() {
+        super.init();
+        chargerTableau();
+    }
 }
