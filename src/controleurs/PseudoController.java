@@ -16,7 +16,7 @@ public class PseudoController extends DefaultController {
 
     @FXML
     protected void afficherPlateau() {
-        JoueurActif.setPseudonyme(pseudonyme.getText());
+        JoueurActif.nouveau(pseudonyme.getText());
         fenetre.setVue("plateau");
     }
 

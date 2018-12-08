@@ -33,7 +33,7 @@ public class PersistanceScores {
         matcher.find();
 
         return new Score(
-                Joueur.get(matcher.group(1)),
+                new Joueur(matcher.group(1)),
                 Integer.valueOf(matcher.group(2)),
                 new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(matcher.group(3))
         );

@@ -20,13 +20,13 @@ public class JoueurActif extends Joueur {
         score = 0;
     }
 
-    public static void setPseudonyme(String pseudonyme) {
+    public static void nouveau(String pseudonyme) {
         instance = new JoueurActif(pseudonyme);
     }
 
     public static JoueurActif getInstance() {
         if(instance == null) {
-            setPseudonyme("Joueur");
+            nouveau("Joueur");
         }
         return instance;
     }
