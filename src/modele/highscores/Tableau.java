@@ -6,14 +6,20 @@ import modele.files.SauverHighscores;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-//TODO: doit être un singleton
 public class Tableau implements Iterable<Score> {
-
     private static final int MAX_SCORES = 10;
+    private static Tableau instance;
     private ArrayList<Score> scores;
 
-    public Tableau() {
+    private Tableau() {
         scores = ParseurHighscores.charger();
+    }
+
+    public static Tableau getInstance() {
+        if (instance == null) {
+            instance = new Tableau();
+        }
+        return instance;
     }
 
     public void ajouter(String nom, int score) {

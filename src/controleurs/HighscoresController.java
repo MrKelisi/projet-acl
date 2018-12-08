@@ -4,6 +4,7 @@ import modele.highscores.Score;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import modele.highscores.Tableau;
 
 public class HighscoresController extends DefaultController {
 
@@ -17,7 +18,7 @@ public class HighscoresController extends DefaultController {
 
     public void chargerTableau() {
         tableau.getItems().clear();
-        for(Score sc : jeu.tableau()) {
+        for(Score sc : Tableau.getInstance()) {
             tableau.getItems().add(sc);
         }
     }

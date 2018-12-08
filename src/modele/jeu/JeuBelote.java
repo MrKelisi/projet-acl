@@ -18,12 +18,10 @@ public class JeuBelote implements Jeu {
     private Carte carte1, carte2;
 
     private ArrayList<Carte> cartes;
-    private Tableau tableau;
     private String pseudonyme;
 
     public JeuBelote() {
         cartes = new ArrayList<>();
-        tableau = new Tableau();
         pseudonyme = "Joueur";
 
         int valeur;
@@ -54,9 +52,6 @@ public class JeuBelote implements Jeu {
     }
     public Carte carte(int i) {
         return (i%2 == 0 ? carte1 : carte2);
-    }
-    public Tableau tableau() {
-        return tableau;
     }
 
     public String pseudonyme() {
@@ -98,7 +93,7 @@ public class JeuBelote implements Jeu {
         score   += res;
 
         if(estTermine()) {
-            tableau.ajouter(pseudonyme, score);
+            Tableau.getInstance().ajouter(pseudonyme, score);
         }
 
         return true;
