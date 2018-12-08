@@ -3,8 +3,6 @@ import javafx.stage.Stage;
 import modele.jeu.JeuBelote;
 import vues.*;
 
-import java.util.HashMap;
-
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);

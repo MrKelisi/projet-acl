@@ -1,8 +1,5 @@
 package modele.highscores;
 
-import modele.files.ParseurHighscores;
-import modele.files.SauverHighscores;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -11,10 +8,18 @@ public class Tableau implements Iterable<Score> {
     private static Tableau instance;
     private ArrayList<Score> scores;
 
+    /**
+     * Tableau des scores, chargé à partir d'un fichier
+     * @see PersistanceScores
+     */
     private Tableau() {
-        scores = ParseurHighscores.charger();
+        scores = PersistanceScores.charger();
     }
 
+    /**
+     * Retourne l'instance du singleton Tableau et, si elle n'existe pas, la crée
+     * @return instance
+     */
     public static Tableau getInstance() {
         if (instance == null) {
             instance = new Tableau();
@@ -22,6 +27,11 @@ public class Tableau implements Iterable<Score> {
         return instance;
     }
 
+    /**
+     * Ajoute un nouveau score au tableau des scores à la date d'exécution
+     * @param nom Nom du joueur
+     * @param score Score du joueur
+     */
     public void ajouter(String nom, int score) {
         int i = 0;
         for(Score sc : scores) {
@@ -36,7 +46,7 @@ public class Tableau implements Iterable<Score> {
             scores.remove(scores.size() - 1);
         }
 
-        SauverHighscores.sauvegarder(this);
+        PersistanceScores.sauvegarder(this);
     }
 
     @Override

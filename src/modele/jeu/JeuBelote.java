@@ -20,6 +20,9 @@ public class JeuBelote implements Jeu {
     private ArrayList<Carte> cartes;
     private String pseudonyme;
 
+    /**
+     * Création d'un jeu de belote (32 cartes)
+     */
     public JeuBelote() {
         cartes = new ArrayList<>();
         pseudonyme = "Joueur";
@@ -41,26 +44,54 @@ public class JeuBelote implements Jeu {
         }
     }
 
+    /**
+     * Numéro du tour actuel de la partie
+     * @return tour
+     */
     public int tour() {
         return tour;
     }
+
+    /**
+     * Resultat actuel de la partie
+     * @return resultat
+     */
     public int resultat() {
         return resultat;
     }
+
+    /**
+     * Score actuel de la partie
+     * @return score
+     */
     public int score() {
         return score;
     }
+
+    /**
+     * Valeur actuel de la carte i
+     * @param i Numéro de la carte désirée
+     * @return La carte demandée
+     */
     public Carte carte(int i) {
         return (i%2 == 0 ? carte1 : carte2);
     }
 
+    /**
+     * Pseudonyme du joueur de la partie
+     * @return pseudonyme
+     */
     public String pseudonyme() {
         return pseudonyme;
     }
+
+    /**
+     * Défini le pseudonyme du joueur pour la partie
+     * @param pseudonyme
+     */
     public void setPseudonyme(String pseudonyme) {
         this.pseudonyme = pseudonyme;
     }
-
 
     @Override
     public void demarrer() {

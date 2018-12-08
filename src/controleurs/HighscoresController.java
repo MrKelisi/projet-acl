@@ -16,16 +16,13 @@ public class HighscoresController extends DefaultController {
         fenetre.setVue("menu");
     }
 
-    public void chargerTableau() {
+    @Override
+    public void init() {
+        super.init();
+
         tableau.getItems().clear();
         for(Score sc : Tableau.getInstance()) {
             tableau.getItems().add(sc);
         }
-    }
-
-    @Override
-    public void init() {
-        super.init();
-        chargerTableau();
     }
 }

@@ -33,6 +33,9 @@ public class PlateauController extends DefaultController {
     private Button abandonner;
 
 
+    /**
+     * Initialise la vue à l'instanciation pour définir les animations sur les objets
+     */
     @PostConstruct
     public void initialize() {
         timeline = new Timeline();
@@ -74,6 +77,9 @@ public class PlateauController extends DefaultController {
         }
     }
 
+    /**
+     * Rafraichi la scène
+     */
     private void refreshScene() {
         carte1.setViewport(getCarteCoords(jeu.carte(1)));
         carte2.setViewport(getCarteCoords(jeu.carte(2)));
@@ -90,11 +96,19 @@ public class PlateauController extends DefaultController {
         toursuivant.setText("Tour suivant (" + jeu.tour() + ")");
     }
 
+    /**
+     * Calcule les coordonnées de la carte désirée sur l'asset
+     * @param carte Carte désirée
+     * @return Coordonnées sur l'asset de carte
+     */
     private Rectangle2D getCarteCoords(Carte carte) {
         return new Rectangle2D(carte.figure().ordinal() * 129, carte.categorie().ordinal() * 185, 129, 185);
     }
 
-    public void demarrer() {
+    @Override
+    public void init() {
+        super.init();
+
         jeu.demarrer();
         jeu.tirer();
         timeline.play();
@@ -102,11 +116,5 @@ public class PlateauController extends DefaultController {
 
         toursuivant.setText("Tour suivant (1)");
         abandonner.setText("Abandonner");
-    }
-
-    @Override
-    public void init() {
-        super.init();
-        demarrer();
     }
 }

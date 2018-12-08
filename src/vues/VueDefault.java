@@ -4,10 +4,7 @@ import controleurs.DefaultController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import modele.jeu.JeuBelote;
-
-import java.util.HashMap;
 
 public class VueDefault implements Vue {
 
@@ -18,6 +15,12 @@ public class VueDefault implements Vue {
     protected DefaultController controller;
     protected Fenetre fenetre;
 
+    /**
+     * Crée une vue à partir d'un fichier fxml
+     * @param chemin Chemin du fichier fxml
+     * @param jeu Jeu à passer au controleur
+     * @param fenetre Fenêtre associée à cette vue
+     */
     public VueDefault(String chemin, JeuBelote jeu, Fenetre fenetre) {
         try {
             loader = new FXMLLoader(getClass().getResource(chemin));
