@@ -59,14 +59,18 @@ public class PlateauController extends DefaultController {
     @FXML
     protected void tourSuivant(ActionEvent event) {
 
+        if(jeu.estTermine()) {
+            jeu.sauvegarder();
+            vue.changerVue("highscores");
+        }
+
         if(jeu.tirer()) {
             timeline.stop();
             timeline.play();
             refreshScene();
 
             if(jeu.estTermine()) {
-                toursuivant.setDisable(true);
-                abandonner.setText("Menu principal");
+                toursuivant.setText("Sauvegarder");
             }
         }
     }
@@ -98,10 +102,8 @@ public class PlateauController extends DefaultController {
         timeline.play();
         refreshScene();
 
-        toursuivant.setDisable(false);
         toursuivant.setText("Tour suivant (1)");
         abandonner.setText("Abandonner");
-
     }
 
 }

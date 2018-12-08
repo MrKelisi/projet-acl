@@ -97,15 +97,16 @@ public class JeuBelote implements Jeu {
         resultat = res;
         score   += res;
 
-        if(estTermine()) {
-            tableau.ajouter(pseudonyme, score);
-        }
-
         return true;
     }
 
     @Override
     public boolean estTermine() {
         return (tour >= MAX_TOURS);
+    }
+
+    @Override
+    public void sauvegarder() {
+        tableau.ajouter(pseudonyme, score);
     }
 }
