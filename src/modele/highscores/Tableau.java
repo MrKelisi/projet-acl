@@ -1,27 +1,22 @@
 package modele.highscores;
 
-import modele.joueurs.Joueur;
+import modele.joueurs.JoueurActif;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
-public class Tableau implements Iterable<Score> {
+public class Tableau implements Iterable<Record> {
     private static final int MAX_SCORES = 10;
     private static Tableau instance;
-    private HashMap<Joueur, Score> playerScores;
-    private ArrayList<Score> scores;
+
+    private ArrayList<Record> records;
 
     /**
      * Tableau des scores, chargé à partir d'un fichier
-     * @see PersistanceScores
+     * @see PersistanceRecords
      */
     private Tableau() {
-        scores = new ArrayList<>();
-        playerScores = new HashMap<>();
-        for(Score score : PersistanceScores.charger()) {
-            ajouter(score.getJoueur(), score);
-        }
+        records = PersistanceRecords.charger();
     }
 
     /**
@@ -36,45 +31,37 @@ public class Tableau implements Iterable<Score> {
     }
 
     /**
-     * Ajoute un nouveau score au tableau des scores à la date d'exécution
-     * @param joueur Joueur
-     * @param score Score du joueur
+     * Ajoute un nouveau record au tableau des records à la date d'exécution
+     * @param joueurActif JoueurActif
      */
-    public void ajouter(Joueur joueur, int score) {
-        ajouter(joueur, new Score(joueur, score));
-    }
+    public void ajouter(JoueurActif joueurActif) {
 
-    private void ajouter(Joueur joueur, Score score) {
-        if(playerScores.containsKey(joueur)) {
-            Score oldScore = playerScores.get(joueur);
-            if(score.getScore() <= oldScore.getScore()) {
-                scores.remove(oldScore);
-            }
-            else {
-                return;
-            }
-        }
+        int index = 0;
 
-        int i = 0;
-        for(Score sc : scores) {
-            if(sc.getScore() > score.getScore()) {
+        for(Record record : records) {
+            if(record.getJoueur().equals(joueurActif)) {
+                if(joueurActif.score() >= record.getScore()) {
+                    return;
+                }
+                records.remove(record);
                 break;
             }
-            i++;
+            if(record.getScore() <= joueurActif.score()) {
+                index++;
+            }
         }
 
-        scores.add(i, score);
-        playerScores.put(joueur, score);
+        records.add(index, new Record(joueurActif, joueurActif.score()));
 
-        if(scores.size() > MAX_SCORES) {
-            scores.remove(scores.size() - 1);
+        if(records.size() > MAX_SCORES) {
+            records.remove(records.size() - 1);
         }
 
-        PersistanceScores.sauvegarder(this);
+        PersistanceRecords.sauvegarder(this);
     }
 
     @Override
-    public Iterator<Score> iterator() {
-        return scores.iterator();
+    public Iterator<Record> iterator() {
+        return records.iterator();
     }
 }

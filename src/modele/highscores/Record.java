@@ -5,7 +5,7 @@ import modele.joueurs.Joueur;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Score {
+public class Record {
 
     private final static SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy à HH:mm:ss");
 
@@ -15,20 +15,18 @@ public class Score {
 
     /**
      * Crée un nouveau score à la date d'exécution
-     * @param joueur Joueur
-     * @param score Score du joueur dans la partie
+     * @param score Record du joueur dans la partie
      */
-    public Score(Joueur joueur, int score) {
+    public Record(Joueur joueur, int score) {
         this(joueur, score, new Date());
     }
 
     /**
      * Crée un score précédemment réalisé à la Date date
-     * @param joueur Joueur
-     * @param score Score du joueur dans la partie
+     * @param score Record du joueur dans la partie
      * @param date Date du score
      */
-    public Score(Joueur joueur, int score, Date date) {
+    public Record(Joueur joueur, int score, Date date) {
         this.joueur = joueur;
         this.score = score;
         this.date = date;

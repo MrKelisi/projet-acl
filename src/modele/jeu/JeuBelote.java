@@ -69,6 +69,6 @@ public class JeuBelote implements Jeu {
 
     @Override
     public void sauvegarder() {
-        Tableau.getInstance().ajouter(JoueurActif.getInstance(), JoueurActif.getInstance().score());
+        Tableau.getInstance().ajouter(JoueurActif.getInstance());
     }
 }

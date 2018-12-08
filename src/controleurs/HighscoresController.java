@@ -1,8 +1,8 @@
 package controleurs;
 
-import modele.highscores.Score;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import modele.highscores.Record;
 import modele.highscores.Tableau;
 
 public class HighscoresController extends DefaultController {
@@ -20,8 +20,8 @@ public class HighscoresController extends DefaultController {
         super.init();
 
         tableau.getItems().clear();
-        for(Score sc : Tableau.getInstance()) {
-            tableau.getItems().add(sc);
+        for(Record record : Tableau.getInstance()) {
+            tableau.getItems().add(record);
         }
     }
 }
