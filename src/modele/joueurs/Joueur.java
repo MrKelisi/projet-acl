@@ -12,4 +12,19 @@ public class Joueur {
         return nom;
     }
 
+    @Override
+    public int hashCode() {
+        return nom.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) {
+            return true;
+        }
+        if(!(o instanceof Joueur)) {
+            return false;
+        }
+        return nom.equals(((Joueur) o).nom);
+    }
 }

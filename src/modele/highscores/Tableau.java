@@ -3,11 +3,13 @@ package modele.highscores;
 import modele.joueurs.Joueur;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class Tableau implements Iterable<Score> {
     private static final int MAX_SCORES = 10;
     private static Tableau instance;
+    private HashMap<Joueur, Score> playerScores;
     private ArrayList<Score> scores;
 
     /**
@@ -15,7 +17,11 @@ public class Tableau implements Iterable<Score> {
      * @see PersistanceScores
      */
     private Tableau() {
-        scores = PersistanceScores.charger();
+        scores = new ArrayList<>();
+        playerScores = new HashMap<>();
+        for(Score score : PersistanceScores.charger()) {
+            ajouter(score.getJoueur(), score);
+        }
     }
 
     /**
@@ -35,14 +41,30 @@ public class Tableau implements Iterable<Score> {
      * @param score Score du joueur
      */
     public void ajouter(Joueur joueur, int score) {
+        ajouter(joueur, new Score(joueur, score));
+    }
+
+    private void ajouter(Joueur joueur, Score score) {
+        if(playerScores.containsKey(joueur)) {
+            Score oldScore = playerScores.get(joueur);
+            if(score.getScore() <= oldScore.getScore()) {
+                scores.remove(oldScore);
+            }
+            else {
+                return;
+            }
+        }
+
         int i = 0;
         for(Score sc : scores) {
-            if(sc.getScore() > score) {
+            if(sc.getScore() > score.getScore()) {
                 break;
             }
             i++;
         }
-        scores.add(i, new Score(joueur, score));
+
+        scores.add(i, score);
+        playerScores.put(joueur, score);
 
         if(scores.size() > MAX_SCORES) {
             scores.remove(scores.size() - 1);
