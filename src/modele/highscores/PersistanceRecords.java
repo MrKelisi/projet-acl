@@ -86,7 +86,10 @@ public class PersistanceRecords {
         PrintWriter writer;
 
         try {
-            file.createNewFile();
+            if(!file.exists()) {
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+            }
             writer = new PrintWriter(file);
         }
         catch (Exception e) {

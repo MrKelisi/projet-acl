@@ -1,0 +1,25 @@
+title Chargement des records
+
+Tableau->PersistanceRecords: charger()
+
+PersistanceRecords->>File: create
+PersistanceRecords->File: fichierExiste = exists()
+
+opt not fichierExiste
+    PersistanceRecords->File: mkdirs()
+    PersistanceRecords->File: createNewFile()
+end
+
+PersistanceRecords->"scanner : Scanner": scanner = create
+
+loop scanner.hasNextLine()
+    PersistanceRecords->"scanner : Scanner": ligne = scanner.nextLine()
+    PersistanceRecords->PersistanceRecords: lire(ligne)
+    PersistanceRecords->>Joueur: create
+    PersistanceRecords->>Record: create
+end
+
+destroy File
+destroy "scanner : Scanner"
+
+PersistanceRecords-->Tableau: records

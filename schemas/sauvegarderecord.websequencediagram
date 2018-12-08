@@ -1,0 +1,30 @@
+title Ajout d'un record
+
+Joueur->>Jeu: sauvegarder()
+
+Jeu->Tableau: ajouter(joueur)
+
+opt record.size() > MAX_SCORES
+    Tableau->Tableau: remove(record.size() - 1)
+end
+
+Tableau->PersistanceRecords: sauvegarder()
+
+PersistanceRecords->>File: create
+PersistanceRecords->File: fichierExiste = exists()
+
+opt not fichierExiste
+    PersistanceRecords->File: mkdirs()
+    PersistanceRecords->File: createNewFile()
+end
+
+PersistanceRecords->PrintWriter: create
+
+loop record in Tableau
+    PersistanceRecords->PrintWriter: write(record.nom, record.score, record.date)
+end
+
+destroy File
+destroy PrintWriter
+
+PersistanceRecords-->Tableau: records
