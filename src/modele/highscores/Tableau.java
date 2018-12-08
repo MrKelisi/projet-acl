@@ -1,5 +1,7 @@
 package modele.highscores;
 
+import modele.joueurs.Joueur;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -29,10 +31,10 @@ public class Tableau implements Iterable<Score> {
 
     /**
      * Ajoute un nouveau score au tableau des scores à la date d'exécution
-     * @param nom Nom du joueur
+     * @param joueur Joueur
      * @param score Score du joueur
      */
-    public void ajouter(String nom, int score) {
+    public void ajouter(Joueur joueur, int score) {
         int i = 0;
         for(Score sc : scores) {
             if(sc.getScore() > score) {
@@ -40,7 +42,7 @@ public class Tableau implements Iterable<Score> {
             }
             i++;
         }
-        scores.add(i, new Score(nom, score));
+        scores.add(i, new Score(joueur, score));
 
         if(scores.size() > MAX_SCORES) {
             scores.remove(scores.size() - 1);

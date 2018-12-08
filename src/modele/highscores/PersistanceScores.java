@@ -1,5 +1,7 @@
 package modele.highscores;
 
+import modele.joueurs.Joueur;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -31,7 +33,7 @@ public class PersistanceScores {
         matcher.find();
 
         return new Score(
-                matcher.group(1),
+                Joueur.get(matcher.group(1)),
                 Integer.valueOf(matcher.group(2)),
                 new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(matcher.group(3))
         );

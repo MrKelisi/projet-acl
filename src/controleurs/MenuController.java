@@ -1,22 +1,21 @@
 package controleurs;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class MenuController extends DefaultController {
 
     @FXML
-    protected void jouer(ActionEvent event) {
+    protected void jouer() {
         fenetre.setVue("pseudo");
     }
 
     @FXML
-    protected void highscores(ActionEvent event) {
+    protected void highscores() {
         fenetre.setVue("highscores");
     }
 
     @FXML
-    protected void quitter(ActionEvent event) {
+    protected void quitter() {
         fenetre.fermer();
     }
 }

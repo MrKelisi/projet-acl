@@ -3,11 +3,6 @@ package modele.jeu;
 public interface Jeu {
 
     /**
-     * Démarre une nouvelle partie
-     */
-    void demarrer();
-
-    /**
      * Tire et met à jour la partie
      * @return boolean
      */

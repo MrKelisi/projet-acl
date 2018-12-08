@@ -1,5 +1,7 @@
 package modele.highscores;
 
+import modele.joueurs.Joueur;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -7,29 +9,33 @@ public class Score {
 
     private final static SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy à HH:mm:ss");
 
-    private String nom;
+    private Joueur joueur;
     private int score;
     private Date date;
 
     /**
      * Crée un nouveau score à la date d'exécution
-     * @param nom Nom du joueur
+     * @param joueur Joueur
      * @param score Score du joueur dans la partie
      */
-    public Score(String nom, int score) {
-        this(nom, score, new Date());
+    public Score(Joueur joueur, int score) {
+        this(joueur, score, new Date());
     }
 
     /**
      * Crée un score précédemment réalisé à la Date date
-     * @param nom Nom du joueur
+     * @param joueur Joueur
      * @param score Score du joueur dans la partie
      * @param date Date du score
      */
-    public Score(String nom, int score, Date date) {
-        this.nom = nom;
+    public Score(Joueur joueur, int score, Date date) {
+        this.joueur = joueur;
         this.score = score;
         this.date = date;
+    }
+
+    public Joueur getJoueur() {
+        return joueur;
     }
 
     /**
@@ -37,7 +43,7 @@ public class Score {
      * @return nom
      */
     public String getNom() {
-        return nom;
+        return joueur.nom();
     }
 
     /**
