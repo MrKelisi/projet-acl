@@ -1,8 +1,8 @@
 package modele.jeu;
 
 import modele.cartes.Carte;
-import modele.cartes.Categories;
-import modele.cartes.Figures;
+import modele.cartes.Categorie;
+import modele.cartes.Figure;
 import modele.highscores.Tableau;
 
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ public class JeuBelote implements Jeu {
         pseudonyme = "Joueur";
 
         int valeur;
-        for(Categories categorie : Categories.values()) {
-            for(Figures figure : Figures.values()) {
+        for(Categorie categorie : Categorie.values()) {
+            for(Figure figure : Figure.values()) {
 
                 switch (figure) {
                     case DIX:   valeur = 10; break;

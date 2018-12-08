@@ -1,6 +1,6 @@
 package modele.cartes;
 
-public enum Figures {
+public enum Figure {
     SEPT,
     HUIT,
     NEUF,

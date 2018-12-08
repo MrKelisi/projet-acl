@@ -2,10 +2,10 @@ package modele.cartes;
 
 public class Carte {
     private int valeur;
-    private Figures figure;
-    private Categories categorie;
+    private Figure figure;
+    private Categorie categorie;
 
-    public Carte(int valeur, Figures figure, Categories categorie) {
+    public Carte(int valeur, Figure figure, Categorie categorie) {
         this.valeur = valeur;
         this.figure = figure;
         this.categorie = categorie;
@@ -14,10 +14,10 @@ public class Carte {
     public int valeur() {
         return valeur;
     }
-    public Figures figure() {
+    public Figure figure() {
         return figure;
     }
-    public Categories categorie() {
+    public Categorie categorie() {
         return categorie;
     }
 
