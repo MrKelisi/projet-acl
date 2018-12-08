@@ -13,26 +13,26 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PersistanceScores {
+public class PersistanceRecords {
 
     private static final String HIGHSCORES = "files/highscores.txt";
     private static final String PATTERN    = "^(.+)\t(-?[0-9]+)\t([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2})$";
 
     /**
-     * Lis une ligne du fichier et l'ajoute au tableau des scores
+     * Lis une ligne du fichier et l'ajoute au tableau des records
      * @param ligne Ligne du fichier
-     * @return Nouveau score lu à partir du fichier
+     * @return Record lu à partir du fichier
      * @throws ParseException
      * @see Tableau
      */
-    private static Score lire(String ligne)
+    private static Record lire(String ligne)
             throws ParseException {
 
         final Pattern pattern = Pattern.compile(PATTERN);
         final Matcher matcher = pattern.matcher(ligne);
         matcher.find();
 
-        return new Score(
+        return new Record(
                 new Joueur(matcher.group(1)),
                 Integer.valueOf(matcher.group(2)),
                 new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(matcher.group(3))
@@ -40,12 +40,12 @@ public class PersistanceScores {
     }
 
     /**
-     * Charge un tableau des scores à partir d'un fichier
-     * @return Une ArrayList de Score contenant les scores du fichier
+     * Charge un tableau des records à partir d'un fichier
+     * @return Une ArrayList contenant les records du fichier
      */
-    public static ArrayList<Score> charger() {
+    public static ArrayList<Record> charger() {
 
-        ArrayList<Score> scores = new ArrayList<>();
+        ArrayList<Record> records = new ArrayList<>();
 
         try {
             File fichierScores = new File(HIGHSCORES);
@@ -56,13 +56,13 @@ public class PersistanceScores {
                 }
                 catch (IOException e) {
                     e.printStackTrace();
-                    return scores;
+                    return records;
                 }
             }
             Scanner sc = new Scanner(fichierScores);
             while(sc.hasNextLine()) {
                 try {
-                    scores.add(lire(sc.nextLine()));
+                    records.add(lire(sc.nextLine()));
                 } catch (Exception e) {
                     System.err.println("Erreur de lecture de la ligne");
                 }
@@ -70,16 +70,16 @@ public class PersistanceScores {
             sc.close();
 
         } catch (FileNotFoundException e) {
-            System.err.println("Fichier des scores introuvables");
+            System.err.println("Fichier des records introuvable");
             e.printStackTrace();
         }
 
-        return scores;
+        return records;
     }
 
     /**
-     * Sauvegarde le tableau des scores dans un fichier
-     * @param tableau Tableau des scores
+     * Sauvegarde le tableau des records dans un fichier
+     * @param tableau Tableau des records
      */
     public static void sauvegarder(Tableau tableau) {
         File file = new File(HIGHSCORES);
@@ -96,8 +96,8 @@ public class PersistanceScores {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        for(Score score : tableau) {
-            writer.print(score.getNom() + "\t" + score.getScore() + "\t" + sdf.format(score.getDate()) + "\n");
+        for(Record record : tableau) {
+            writer.print(record.getNom() + "\t" + record.getScore() + "\t" + sdf.format(record.getDate()) + "\n");
         }
 
         writer.close();
