@@ -7,16 +7,16 @@ public class MenuController extends DefaultController {
 
     @FXML
     protected void jouer(ActionEvent event) {
-        vue.changerVue("pseudo");
+        fenetre.setVue("pseudo");
     }
 
     @FXML
     protected void highscores(ActionEvent event) {
-        vue.changerVue("highscores");
+        fenetre.setVue("highscores");
     }
 
     @FXML
     protected void quitter(ActionEvent event) {
-        vue.changerVue("");
+        fenetre.fermer();
     }
 }

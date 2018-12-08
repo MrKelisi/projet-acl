@@ -11,13 +11,13 @@ public class PseudoController extends DefaultController {
 
     @FXML
     protected void menu(ActionEvent event) {
-        vue.changerVue("menu");
+        fenetre.setVue("menu");
     }
 
     @FXML
     protected void plateau(ActionEvent event) {
         jeu.setPseudonyme(pseudonyme.getText());
-        vue.changerVue("plateau");
+        fenetre.setVue("plateau");
     }
 
 }

@@ -5,8 +5,8 @@ import controleurs.HighscoresController;
 
 public class VueHighscores extends VueDefault {
 
-    public VueHighscores(JeuBelote jeu) {
-        super("fxml/highscores.fxml", jeu);
+    public VueHighscores(JeuBelote jeu, Fenetre fenetre) {
+        super("fxml/highscores.fxml", jeu, fenetre);
 
     }
 

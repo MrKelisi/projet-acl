@@ -15,12 +15,10 @@ public abstract class VueDefault implements Vue {
     private Parent root;
     private Scene scene;
 
-    private Stage primaryStage;
-    private HashMap<String, Vue> vues;
     protected DefaultController controller;
+    protected Fenetre fenetre;
 
-    protected VueDefault(String chemin, JeuBelote jeu) {
-
+    protected VueDefault(String chemin, JeuBelote jeu, Fenetre fenetre) {
         try {
             loader = new FXMLLoader(getClass().getResource(chemin));
             root   = loader.load();
@@ -28,7 +26,7 @@ public abstract class VueDefault implements Vue {
 
             controller = loader.getController();
             controller.setJeu(jeu);
-            controller.setVue(this);
+            controller.setFenetre(fenetre);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -41,29 +39,5 @@ public abstract class VueDefault implements Vue {
     }
 
     @Override
-    public void changerVue(String nom) {
-        try {
-            Vue vue = vues.get(nom);
-            vue.init();
-            primaryStage.setScene(vue.getScene());
-        } catch (Exception e) {
-            primaryStage.close();
-        }
-    }
-
-    @Override
     public void init() {}
-
-
-
-    @Override
-    public void setPrimaryStage(Stage stage) {
-        this.primaryStage = stage;
-    }
-
-    @Override
-    public void setVues(HashMap<String, Vue> vues) {
-        this.vues = vues;
-    }
-
 }

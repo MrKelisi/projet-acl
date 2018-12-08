@@ -5,8 +5,8 @@ import controleurs.PlateauController;
 
 public class VuePlateau extends VueDefault {
 
-    public VuePlateau(JeuBelote jeu) {
-        super("fxml/plateau.fxml", jeu);
+    public VuePlateau(JeuBelote jeu, Fenetre fenetre) {
+        super("fxml/plateau.fxml", jeu, fenetre);
 
     }
 

@@ -10,9 +10,5 @@ public interface Vue {
     int HEIGHT = 450;
 
     public Scene getScene();
-    public void changerVue(String nom);
     public void init();
-
-    public void setPrimaryStage(Stage stage);
-    public void setVues(HashMap<String, Vue> vues);
 }

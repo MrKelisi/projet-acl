@@ -13,7 +13,7 @@ public class HighscoresController extends DefaultController {
 
     @FXML
     protected void menu(ActionEvent event) {
-        vue.changerVue("menu");
+        fenetre.setVue("menu");
     }
 
     public void chargerTableau() {

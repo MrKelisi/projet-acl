@@ -53,7 +53,7 @@ public class PlateauController extends DefaultController {
 
     @FXML
     protected void menu(ActionEvent event) {
-        vue.changerVue("menu");
+        fenetre.setVue("menu");
     }
 
     @FXML
@@ -61,7 +61,7 @@ public class PlateauController extends DefaultController {
 
         if(jeu.estTermine()) {
             jeu.sauvegarder();
-            vue.changerVue("highscores");
+            fenetre.setVue("highscores");
         }
 
         if(jeu.tirer()) {
