@@ -24,6 +24,8 @@ public class PlateauController extends DefaultController {
     @FXML
     private ImageView carte2;
     @FXML
+    private Text tour;
+    @FXML
     private Text resultat;
     @FXML
     private Text score;
@@ -93,7 +95,7 @@ public class PlateauController extends DefaultController {
         }
 
         score.setText("Votre score : " + jeu.score());
-        toursuivant.setText("Tour suivant (" + jeu.tour() + ")");
+        tour.setText("Tour n°" + jeu.tour());
     }
 
     /**
@@ -114,7 +116,7 @@ public class PlateauController extends DefaultController {
         timeline.play();
         refreshScene();
 
-        toursuivant.setText("Tour suivant (1)");
+        toursuivant.setText("Tour suivant");
         abandonner.setText("Abandonner");
     }
 }

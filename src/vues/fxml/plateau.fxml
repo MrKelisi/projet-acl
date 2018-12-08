@@ -6,14 +6,15 @@
 <?import javafx.scene.layout.FlowPane?>
 
 <GridPane fx:controller="controleurs.PlateauController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="20">
+          xmlns:fx="http://javafx.com/fxml"
+          alignment="center"
+          vgap="15">
 
     <GridPane alignment="center"
-              hgap="15" vgap="30"
+              hgap="15"
               GridPane.rowIndex="0">
 
         <ImageView fx:id="carte1"
-                   GridPane.rowIndex="0"
                    GridPane.columnIndex="0">
             <image>
                 <Image url="/vues/resources/cartes.png"/>
@@ -22,29 +23,37 @@
 
         <FlowPane prefWidth="50"
                   alignment="CENTER"
-                  GridPane.rowIndex="0"
                   GridPane.columnIndex="1">
             <Text text="0" fx:id="resultat" style="-fx-font-size: 24"/>
         </FlowPane>
 
         <ImageView fx:id="carte2"
-                   GridPane.rowIndex="0"
                    GridPane.columnIndex="2">
             <image>
                 <Image url="/vues/resources/cartes.png"/>
             </image>
         </ImageView>
-
     </GridPane>
 
-    <FlowPane alignment="CENTER"
+    <FlowPane alignment="center"
+              orientation="VERTICAL"
+              columnHalignment="CENTER"
+              prefWrapLength="NaN"
+              vgap="5"
               GridPane.rowIndex="1">
-        <Text text="0" fx:id="score" style="-fx-font-size: 17; -fx-fill: #0e61ff"/>
+
+        <Text text="Tour n°0"
+              fx:id="tour"
+              style="-fx-font-size: 14; -fx-fill: #0e61ff"/>
+
+        <Text text="Votre score : 0"
+              fx:id="score"
+              style="-fx-font-size: 17; -fx-fill: #0e61ff"/>
     </FlowPane>
 
     <GridPane alignment="center"
-              hgap="20" vgap="15"
-              GridPane.rowIndex="2">
+              hgap="20"
+              GridPane.rowIndex="3">
 
         <Button text="Tour suivant"
                 fx:id="toursuivant"
@@ -56,7 +65,6 @@
                 onAction="#menu"
                 GridPane.rowIndex="0"
                 GridPane.columnIndex="1"/>
-
     </GridPane>
 
 </GridPane>
