@@ -12,11 +12,11 @@
           style="-fx-font-size: 30px"/>
 
     <Button text="Jouer"
-            onAction="#jouer"
+            onAction="#afficherFormulairePseudonyme"
             GridPane.rowIndex="1"
             GridPane.columnIndex="0"/>
     <Button text="Tableau des scores"
-            onAction="#highscores"
+            onAction="#afficherTableauScores"
             GridPane.rowIndex="1"
             GridPane.columnIndex="1"/>
     <Button text="Quitter"

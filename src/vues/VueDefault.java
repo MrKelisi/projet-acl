@@ -13,7 +13,6 @@ public class VueDefault implements Vue {
     private Scene scene;
 
     protected DefaultController controller;
-    protected Fenetre fenetre;
 
     /**
      * Crée une vue à partir d'un fichier fxml

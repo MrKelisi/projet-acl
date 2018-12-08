@@ -19,11 +19,11 @@
             GridPane.columnSpan="2"/>
 
     <Button text="Démarrer la partie"
-            onAction="#plateau"
+            onAction="#afficherPlateau"
             GridPane.rowIndex="2"
             GridPane.columnIndex="0"/>
     <Button text="Abandonner"
-            onAction="#menu"
+            onAction="#afficherMenuPrincipal"
             GridPane.rowIndex="2"
             GridPane.columnIndex="1"/>
 

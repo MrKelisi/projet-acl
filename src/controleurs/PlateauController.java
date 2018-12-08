@@ -56,12 +56,12 @@ public class PlateauController extends DefaultController {
 
 
     @FXML
-    protected void menu(ActionEvent event) {
+    protected void afficherMenuPrincipal(ActionEvent event) {
         fenetre.setVue("menu");
     }
 
     @FXML
-    protected void tourSuivant(ActionEvent event) {
+    protected void piocherCartes(ActionEvent event) {
 
         if(jeu.estTermine()) {
             jeu.sauvegarder();

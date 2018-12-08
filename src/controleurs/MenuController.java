@@ -6,12 +6,12 @@ import javafx.fxml.FXML;
 public class MenuController extends DefaultController {
 
     @FXML
-    protected void jouer(ActionEvent event) {
+    protected void afficherFormulairePseudonyme(ActionEvent event) {
         fenetre.setVue("pseudo");
     }
 
     @FXML
-    protected void highscores(ActionEvent event) {
+    protected void afficherTableauScores(ActionEvent event) {
         fenetre.setVue("highscores");
     }
 

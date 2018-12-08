@@ -10,12 +10,12 @@ public class PseudoController extends DefaultController {
     private TextField pseudonyme;
 
     @FXML
-    protected void menu(ActionEvent event) {
+    protected void afficherMenuPrincipal(ActionEvent event) {
         fenetre.setVue("menu");
     }
 
     @FXML
-    protected void plateau(ActionEvent event) {
+    protected void afficherPlateau(ActionEvent event) {
         jeu.setPseudonyme(pseudonyme.getText());
         fenetre.setVue("plateau");
     }

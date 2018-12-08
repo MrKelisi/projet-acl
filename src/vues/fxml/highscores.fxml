@@ -39,7 +39,7 @@
     </TableView>
 
     <Button text="Menu principal"
-            onAction="#menu"
+            onAction="#afficherMenuPrincipal"
             GridPane.rowIndex="2"/>
 
 </GridPane>

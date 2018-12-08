@@ -12,7 +12,7 @@ public class HighscoresController extends DefaultController {
     private TableView tableau;
 
     @FXML
-    protected void menu(ActionEvent event) {
+    protected void afficherMenuPrincipal(ActionEvent event) {
         fenetre.setVue("menu");
     }
 

@@ -57,12 +57,12 @@
 
         <Button text="Tour suivant"
                 fx:id="toursuivant"
-                onAction="#tourSuivant"
+                onAction="#piocherCartes"
                 GridPane.rowIndex="0"
                 GridPane.columnIndex="0"/>
         <Button text="Abandonner"
                 fx:id="abandonner"
-                onAction="#menu"
+                onAction="#afficherMenuPrincipal"
                 GridPane.rowIndex="0"
                 GridPane.columnIndex="1"/>
     </GridPane>
