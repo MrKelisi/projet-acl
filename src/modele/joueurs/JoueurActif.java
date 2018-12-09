@@ -1,6 +1,6 @@
 package modele.joueurs;
 
-import modele.cartes.Carte;
+import modele.cartes.CarteAJouer;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,7 +11,7 @@ public class JoueurActif extends Joueur {
     private int tour;
     private int resultat;
     private int score;
-    private Carte carte1, carte2;
+    private CarteAJouer carte1, carte2;
 
     private JoueurActif(String nom) {
         super(nom);
@@ -43,11 +43,11 @@ public class JoueurActif extends Joueur {
         return score;
     }
 
-    public Carte getCarte1() {
+    public CarteAJouer getCarte1() {
         return carte1;
     }
 
-    public Carte getCarte2() {
+    public CarteAJouer getCarte2() {
         return carte2;
     }
 
@@ -56,7 +56,7 @@ public class JoueurActif extends Joueur {
         score += res;
     }
 
-    public void tirer(ArrayList<Carte> cartes) {
+    public void tirer(ArrayList<CarteAJouer> cartes) {
         int index1 = ThreadLocalRandom.current().nextInt(0, cartes.size());
         int index2 = ThreadLocalRandom.current().nextInt(0, cartes.size());
 

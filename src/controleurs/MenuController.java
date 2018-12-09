@@ -2,7 +2,7 @@ package controleurs;
 
 import javafx.fxml.FXML;
 
-public class MenuController extends DefaultController {
+public class MenuController extends BaseController {
 
     @FXML
     protected void afficherFormulairePseudonyme() {

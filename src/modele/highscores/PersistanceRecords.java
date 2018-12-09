@@ -23,7 +23,7 @@ public class PersistanceRecords {
      * @param ligne Ligne du fichier
      * @return Record lu à partir du fichier
      * @throws ParseException
-     * @see Tableau
+     * @see TableauRecords
      */
     private static Record lire(String ligne)
             throws ParseException {
@@ -78,10 +78,10 @@ public class PersistanceRecords {
     }
 
     /**
-     * Sauvegarde le tableau des records dans un fichier
-     * @param tableau Tableau des records
+     * Sauvegarde le tableauRecords des records dans un fichier
+     * @param tableauRecords TableauRecords des records
      */
-    public static void sauvegarder(Tableau tableau) {
+    public static void sauvegarder(TableauRecords tableauRecords) {
         File file = new File(HIGHSCORES);
         PrintWriter writer;
 
@@ -99,7 +99,7 @@ public class PersistanceRecords {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        for(Record record : tableau) {
+        for(Record record : tableauRecords) {
             writer.print(record.getNom() + "\t" + record.getScore() + "\t" + sdf.format(record.getDate()) + "\n");
         }
 

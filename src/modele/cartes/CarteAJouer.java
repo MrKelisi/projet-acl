@@ -1,20 +1,20 @@
 package modele.cartes;
 
-public class Carte {
+public class CarteAJouer {
     private int valeur;
-    private Figure figure;
-    private Categorie categorie;
+    private FigureCarte figure;
+    private EnseigneCarte enseigne;
 
     /**
      * Crée une carte à jouer avec une valeur, une figure et une catégorie
      * @param valeur La valeur de la carte
      * @param figure La figure de la carte
-     * @param categorie La catégorie de la carte
+     * @param enseigne La catégorie de la carte
      */
-    public Carte(int valeur, Figure figure, Categorie categorie) {
+    public CarteAJouer(int valeur, FigureCarte figure, EnseigneCarte enseigne) {
         this.valeur = valeur;
         this.figure = figure;
-        this.categorie = categorie;
+        this.enseigne = enseigne;
     }
 
     /**
@@ -29,20 +29,20 @@ public class Carte {
      * Retourne le type de figure
      * @return figure
      */
-    public Figure figure() {
+    public FigureCarte figure() {
         return figure;
     }
 
     /**
      * Retourne la catégorie
-     * @return categorie
+     * @return enseigne
      */
-    public Categorie categorie() {
-        return categorie;
+    public EnseigneCarte categorie() {
+        return enseigne;
     }
 
     @Override
     public String toString() {
-        return figure + " de " + categorie + " (" + valeur + ")";
+        return figure + " de " + enseigne + " (" + valeur + ")";
     }
 }

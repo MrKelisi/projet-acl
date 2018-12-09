@@ -3,7 +3,7 @@ package modele.cartes;
 /**
  * Figures de carte à jouer (dans un jeu de 32 cartes)
  */
-public enum Figure {
+public enum FigureCarte {
     SEPT,
     HUIT,
     NEUF,

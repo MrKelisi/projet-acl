@@ -5,27 +5,27 @@ import modele.joueurs.JoueurActif;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Tableau implements Iterable<Record> {
+public class TableauRecords implements Iterable<Record> {
     private static final int MAX_SCORES = 10;
-    private static Tableau instance;
+    private static TableauRecords instance;
 
     private ArrayList<Record> records;
 
     /**
-     * Tableau des scores, chargé à partir d'un fichier
+     * TableauRecords des scores, chargé à partir d'un fichier
      * @see PersistanceRecords
      */
-    private Tableau() {
+    private TableauRecords() {
         records = PersistanceRecords.charger();
     }
 
     /**
-     * Retourne l'instance du singleton Tableau et, si elle n'existe pas, la crée
+     * Retourne l'instance du singleton TableauRecords et, si elle n'existe pas, la crée
      * @return instance
      */
-    public static Tableau getInstance() {
+    public static TableauRecords getInstance() {
         if (instance == null) {
-            instance = new Tableau();
+            instance = new TableauRecords();
         }
         return instance;
     }

@@ -3,13 +3,13 @@ package controleurs;
 import modele.jeu.JeuBelote;
 import vues.Fenetre;
 
-public abstract class DefaultController {
+public abstract class BaseController {
     protected Fenetre fenetre;
     protected JeuBelote jeu;
 
     /**
      * Défini le jeu associé au controleur
-     * @param jeu Jeu à controler
+     * @param jeu JeuCartes à controler
      */
     public void setJeu(JeuBelote jeu) {
         this.jeu = jeu;

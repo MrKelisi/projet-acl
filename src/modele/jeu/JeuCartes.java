@@ -1,9 +1,9 @@
 package modele.jeu;
 
-public interface Jeu {
+public interface JeuCartes {
 
     /**
-     * Tire et met à jour la partie
+     * Tire une carte et met à jour la partie
      * @return boolean
      */
     boolean tirer();

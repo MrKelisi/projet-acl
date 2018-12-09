@@ -1,19 +1,17 @@
 package modele.jeu;
 
-import modele.cartes.Carte;
-import modele.cartes.Categorie;
-import modele.cartes.Figure;
-import modele.highscores.Tableau;
-import modele.joueurs.Joueur;
+import modele.cartes.CarteAJouer;
+import modele.cartes.EnseigneCarte;
+import modele.cartes.FigureCarte;
+import modele.highscores.TableauRecords;
 import modele.joueurs.JoueurActif;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class JeuBelote implements Jeu {
+public class JeuBelote implements JeuCartes {
 
     private final static int MAX_TOURS = 5;
-    private static ArrayList<Carte> cartes;
+    private static ArrayList<CarteAJouer> cartes;
 
     /**
      * Création d'un jeu de belote (32 cartes)
@@ -22,8 +20,8 @@ public class JeuBelote implements Jeu {
         cartes = new ArrayList<>();
 
         int valeur;
-        for(Categorie categorie : Categorie.values()) {
-            for(Figure figure : Figure.values()) {
+        for(EnseigneCarte enseigne : EnseigneCarte.values()) {
+            for(FigureCarte figure : FigureCarte.values()) {
 
                 switch (figure) {
                     case DIX:   valeur = 10; break;
@@ -33,7 +31,7 @@ public class JeuBelote implements Jeu {
                     case AS:    valeur = 11; break;
                     default:    valeur = 0;
                 }
-                cartes.add(new Carte(valeur, figure, categorie));
+                cartes.add(new CarteAJouer(valeur, figure, enseigne));
             }
         }
     }
@@ -47,8 +45,8 @@ public class JeuBelote implements Jeu {
         }
 
         JoueurActif.getInstance().tirer(cartes);
-        Carte carte1 = JoueurActif.getInstance().getCarte1();
-        Carte carte2 = JoueurActif.getInstance().getCarte2();
+        CarteAJouer carte1 = JoueurActif.getInstance().getCarte1();
+        CarteAJouer carte2 = JoueurActif.getInstance().getCarte2();
 
         int res = carte1.valeur() + carte2.valeur();
         if(carte1.figure().equals(carte2.figure())) {
@@ -69,6 +67,6 @@ public class JeuBelote implements Jeu {
 
     @Override
     public void sauvegarder() {
-        Tableau.getInstance().ajouter(JoueurActif.getInstance());
+        TableauRecords.getInstance().ajouter(JoueurActif.getInstance());
     }
 }

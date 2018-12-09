@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import modele.joueurs.JoueurActif;
 
-public class PseudoController extends DefaultController {
+public class PseudoController extends BaseController {
 
     @FXML
     private TextField pseudonyme;

@@ -13,10 +13,10 @@ public class ApplicationACL extends Application {
         Fenetre fenetre = new Fenetre(primaryStage);
         JeuBelote jeu     = new JeuBelote();
 
-        fenetre.addVue("menu",       new VueDefault("fxml/menu.fxml", jeu, fenetre));
-        fenetre.addVue("highscores", new VueDefault("fxml/highscores.fxml", jeu, fenetre));
-        fenetre.addVue("pseudo",     new VueDefault("fxml/pseudo.fxml", jeu, fenetre));
-        fenetre.addVue("plateau",    new VueDefault("fxml/plateau.fxml", jeu, fenetre));
+        fenetre.addVue("menu",       new VueBaseJeu("fxml/menu.fxml", jeu, fenetre));
+        fenetre.addVue("highscores", new VueBaseJeu("fxml/highscores.fxml", jeu, fenetre));
+        fenetre.addVue("pseudo",     new VueBaseJeu("fxml/pseudo.fxml", jeu, fenetre));
+        fenetre.addVue("plateau",    new VueBaseJeu("fxml/plateau.fxml", jeu, fenetre));
 
         primaryStage.setTitle("Projet ACL");
         fenetre.setVue("menu");

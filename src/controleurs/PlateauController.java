@@ -5,7 +5,7 @@ import javafx.animation.KeyValue;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import modele.cartes.Carte;
+import modele.cartes.CarteAJouer;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,7 +15,7 @@ import modele.joueurs.JoueurActif;
 
 import javax.annotation.PostConstruct;
 
-public class PlateauController extends DefaultController {
+public class PlateauController extends BaseController {
 
     private Timeline timeline;
 
@@ -100,10 +100,10 @@ public class PlateauController extends DefaultController {
 
     /**
      * Calcule les coordonnées de la carte désirée sur l'asset
-     * @param carte Carte désirée
+     * @param carte CarteAJouer désirée
      * @return Coordonnées sur l'asset de carte
      */
-    private Rectangle2D getCarteCoords(Carte carte) {
+    private Rectangle2D getCarteCoords(CarteAJouer carte) {
         return new Rectangle2D(carte.figure().ordinal() * 129, carte.categorie().ordinal() * 185, 129, 185);
     }
 

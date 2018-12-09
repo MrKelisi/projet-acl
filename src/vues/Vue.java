@@ -1,6 +1,6 @@
 package vues;
 
-import controleurs.DefaultController;
+import controleurs.BaseController;
 import javafx.scene.Scene;
 
 public interface Vue {
@@ -17,5 +17,5 @@ public interface Vue {
      * Retourne le controleur associé à la vue
      * @return controller
      */
-    DefaultController getControleur(); //TODO: interface ici
+    BaseController getControleur(); //TODO: interface ici
 }
