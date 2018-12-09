@@ -17,5 +17,5 @@ public interface Vue {
      * Retourne le controleur associé à la vue
      * @return controller
      */
-    BaseController getControleur(); //TODO: interface ici
+    BaseController getControleur();
 }

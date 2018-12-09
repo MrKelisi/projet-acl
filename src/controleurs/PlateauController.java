@@ -5,13 +5,14 @@ import javafx.animation.KeyValue;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import modele.belote.ResultatTirage;
 import modele.cartes.CarteAJouer;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
-import modele.joueurs.JoueurActif;
+import modele.belote.JoueurActif;
 
 import javax.annotation.PostConstruct;
 
@@ -62,19 +63,15 @@ public class PlateauController extends BaseController {
 
     @FXML
     protected void piocherCartes() {
-
-        if(jeu.estTermine()) {
-            jeu.sauvegarder();
-            fenetre.setVue("highscores");
-        }
-
-        if(jeu.tirer()) {
+        if(JoueurActif.getInstance().tirer()) {
             timeline.stop();
             timeline.play();
             refreshScene();
 
-            if(jeu.estTermine()) {
-                toursuivant.setText("Sauvegarder");
+            if(JoueurActif.getInstance().aTermine()) {
+                JoueurActif.getInstance().sauvegarder();
+                toursuivant.setVisible(false);
+                abandonner.setText("Menu principal");
             }
         }
     }
@@ -83,14 +80,15 @@ public class PlateauController extends BaseController {
      * Rafraichit la scène
      */
     private void refreshScene() {
-        carte1.setViewport( getCarteCoords(JoueurActif.getInstance().getCarte1()) );
-        carte2.setViewport( getCarteCoords(JoueurActif.getInstance().getCarte2()) );
+        ResultatTirage resultatTirage = JoueurActif.getInstance().getResultatDernierTirage();
+        carte1.setViewport( getCarteCoords(resultatTirage.getCarte1()) );
+        carte2.setViewport( getCarteCoords(resultatTirage.getCarte2()) );
 
-        if(JoueurActif.getInstance().resultat() > 0) {
-            resultat.setText("+" + JoueurActif.getInstance().resultat());
+        if(resultatTirage.getResultat() > 0) {
+            resultat.setText("+" + resultatTirage.getResultat());
             resultat.setFill(Color.INDIANRED);
         } else {
-            resultat.setText(Integer.toString(JoueurActif.getInstance().resultat()));
+            resultat.setText(Integer.toString(resultatTirage.getResultat()));
             resultat.setFill(Color.LIMEGREEN);
         }
 
@@ -113,7 +111,7 @@ public class PlateauController extends BaseController {
 
         piocherCartes();
 
-        toursuivant.setText("Tour suivant");
+        toursuivant.setVisible(true);
         abandonner.setText("Abandonner");
     }
 }

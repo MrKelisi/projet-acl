@@ -1,14 +1,14 @@
-package modele.jeu;
+package modele.belote;
 
 import modele.cartes.CarteAJouer;
 import modele.cartes.EnseigneCarte;
 import modele.cartes.FigureCarte;
 import modele.highscores.TableauRecords;
-import modele.joueurs.JoueurActif;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class JeuBelote implements JeuCartes {
+public class JeuBelote {
 
     private final static int MAX_TOURS = 5;
     private static ArrayList<CarteAJouer> cartes;
@@ -36,17 +36,18 @@ public class JeuBelote implements JeuCartes {
         }
     }
 
+    /**
+     * Tire 2 cartes et retourne le nouvel état du joueur
+     * @return Résultat du tirage
+     */
+    public ResultatTirage tirer() {
+        ResultatTirage resultat = new ResultatTirage();
 
-    @Override
-    public boolean tirer() {
+        int index1 = ThreadLocalRandom.current().nextInt(0, cartes.size());
+        int index2 = ThreadLocalRandom.current().nextInt(0, cartes.size());
 
-        if(estTermine()) {
-            return false;
-        }
-
-        JoueurActif.getInstance().tirer(cartes);
-        CarteAJouer carte1 = JoueurActif.getInstance().getCarte1();
-        CarteAJouer carte2 = JoueurActif.getInstance().getCarte2();
+        CarteAJouer carte1 = cartes.get(index1);
+        CarteAJouer carte2 = cartes.get(index2);
 
         int res = carte1.valeur() + carte2.valeur();
         if(carte1.figure().equals(carte2.figure())) {
@@ -56,16 +57,23 @@ public class JeuBelote implements JeuCartes {
             }
         }
 
-        JoueurActif.getInstance().setResultat(res);
-        return true;
+        resultat.setCarte1(carte1);
+        resultat.setCarte2(carte2);
+        resultat.setResultat(res);
+
+        return resultat;
     }
 
-    @Override
+    /**
+     * @return Vrai si la partie est terminée
+     */
     public boolean estTermine() {
         return (JoueurActif.getInstance().tour() >= MAX_TOURS);
     }
 
-    @Override
+    /**
+     * Sauvegarde le score
+     */
     public void sauvegarder() {
         TableauRecords.getInstance().ajouter(JoueurActif.getInstance());
     }

@@ -4,9 +4,9 @@ import controleurs.BaseController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import modele.jeu.JeuBelote;
+import modele.belote.JeuBelote;
 
-public class VueBaseJeu implements Vue {
+public class VueBase implements Vue {
 
     private FXMLLoader loader;
     private Parent root;
@@ -17,17 +17,15 @@ public class VueBaseJeu implements Vue {
     /**
      * Crée une vue à partir d'un fichier fxml
      * @param chemin Chemin du fichier fxml
-     * @param jeu JeuCartes à passer au controleur
      * @param fenetre Fenêtre associée à cette vue
      */
-    public VueBaseJeu(String chemin, JeuBelote jeu, Fenetre fenetre) {
+    public VueBase(String chemin, Fenetre fenetre) {
         try {
             loader = new FXMLLoader(getClass().getResource(chemin));
             root   = loader.load();
             scene  = new Scene(root, WIDTH, HEIGHT);
 
             controller = loader.getController();
-            controller.setJeu(jeu);
             controller.setFenetre(fenetre);
         }
         catch (Exception e) {

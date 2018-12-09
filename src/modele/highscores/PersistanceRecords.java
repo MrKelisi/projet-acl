@@ -1,6 +1,6 @@
 package modele.highscores;
 
-import modele.joueurs.Joueur;
+import modele.Joueur;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,6 +1,6 @@
 package modele.highscores;
 
-import modele.joueurs.JoueurActif;
+import modele.belote.JoueurActif;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,19 +1,10 @@
 package controleurs;
 
-import modele.jeu.JeuBelote;
+import modele.belote.JeuBelote;
 import vues.Fenetre;
 
 public abstract class BaseController {
     protected Fenetre fenetre;
-    protected JeuBelote jeu;
-
-    /**
-     * Défini le jeu associé au controleur
-     * @param jeu JeuCartes à controler
-     */
-    public void setJeu(JeuBelote jeu) {
-        this.jeu = jeu;
-    } //TODO: utiliser l'interface ici ?
 
     /**
      * Ajoute la fenêtre associé à la vue de ce controleur

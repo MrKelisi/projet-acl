@@ -2,7 +2,7 @@ package controleurs;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import modele.joueurs.JoueurActif;
+import modele.belote.JoueurActif;
 
 public class PseudoController extends BaseController {
 
