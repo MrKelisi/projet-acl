@@ -1,7 +1,7 @@
 package modele.cartes;
 
 /**
- * Catégories de carte à jouer
+ * Enseigne de carte à jouer
  */
 public enum EnseigneCarte {
     TREFLE,

@@ -34,6 +34,9 @@ public class Record {
         this.date = date;
     }
 
+    /**
+     * @return Le joueur associé à ce record
+     */
     public Joueur getJoueur() {
         return joueur;
     }

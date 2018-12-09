@@ -80,7 +80,7 @@ public class PlateauController extends BaseController {
     }
 
     /**
-     * Rafraichi la scène
+     * Rafraichit la scène
      */
     private void refreshScene() {
         carte1.setViewport( getCarteCoords(JoueurActif.getInstance().getCarte1()) );

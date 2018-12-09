@@ -1,13 +1,15 @@
 package modele.joueurs;
 
 public class Joueur {
-
     private String nom;
 
     public Joueur(String nom) {
         this.nom = nom;
     }
 
+    /**
+     * @return Nom du joueur
+     */
     public String nom() {
         return nom;
     }
