@@ -1,6 +1,7 @@
 package modele.belote;
 
 import modele.Joueur;
+import modele.highscores.TableauRecords;
 
 public class JoueurActif extends Joueur {
     private static JoueurActif instance;
@@ -57,11 +58,11 @@ public class JoueurActif extends Joueur {
     }
 
     public boolean aTermine() {
-        return jeu.estTermine();
+        return tour >= JeuBelote.MAX_TOURS;
     }
 
     public void sauvegarder() {
-        jeu.sauvegarder();
+        TableauRecords.getInstance().ajouter(JoueurActif.getInstance());
     }
 
     /**

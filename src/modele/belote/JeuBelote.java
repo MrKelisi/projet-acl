@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class JeuBelote {
 
-    private final static int MAX_TOURS = 5;
+    public final static int MAX_TOURS = 5;
     private static ArrayList<CarteAJouer> cartes;
 
     /**
@@ -62,19 +62,5 @@ public class JeuBelote {
         resultat.setResultat(res);
 
         return resultat;
-    }
-
-    /**
-     * @return Vrai si la partie est terminée
-     */
-    public boolean estTermine() {
-        return (JoueurActif.getInstance().tour() >= MAX_TOURS);
-    }
-
-    /**
-     * Sauvegarde le score
-     */
-    public void sauvegarder() {
-        TableauRecords.getInstance().ajouter(JoueurActif.getInstance());
     }
 }
