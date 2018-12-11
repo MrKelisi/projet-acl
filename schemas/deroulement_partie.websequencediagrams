@@ -1,0 +1,35 @@
+title Déroulement d'une partie
+
+loop i=1…5
+    J->>+PlateauController:piocherCartes()
+
+    PlateauController->+Joueur: tirer()
+
+    Joueur->+"jeu: Jeu": tirer()
+    "jeu: Jeu"->>+"resultat: ResultatTirage": create
+    "jeu: Jeu"->"resultat: ResultatTirage": setCarte1(carte1)
+    "jeu: Jeu"->"resultat: ResultatTirage": setCarte2(carte2)
+    "jeu: Jeu"->"resultat: ResultatTirage": setResultat(res)
+    "jeu: Jeu"-->-"Joueur": resultat
+
+    Joueur-->-PlateauController:
+
+    PlateauController->+PlateauController: refreshScene()
+    PlateauController->Joueur: resultat = getResultat()
+    PlateauController->"resultat: ResultatTirage": getCarte1()
+    PlateauController->"resultat: ResultatTirage": getCarte2()
+    PlateauController->"resultat: ResultatTirage": getResultat()
+    PlateauController-->-PlateauController:
+
+    opt i < 5
+        PlateauController-->J:
+    end
+end
+
+PlateauController->Joueur: sauvegarder()
+PlateauController-->-J:
+J->>PlateauController: afficherMenuPrincipal()
+
+destroy "resultat: ResultatTirage"
+destroy "jeu: Jeu"
+destroy Joueur

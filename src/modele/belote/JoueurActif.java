@@ -80,4 +80,8 @@ public class JoueurActif extends Joueur {
 
         return true;
     }
+
+    public static void reset() {
+        instance = null;
+    }
 }

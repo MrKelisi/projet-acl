@@ -58,6 +58,7 @@ public class PlateauController extends BaseController {
 
     @FXML
     protected void afficherMenuPrincipal() {
+        JoueurActif.reset();
         fenetre.setVue("menu");
     }
 
