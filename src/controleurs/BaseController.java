@@ -1,6 +1,5 @@
 package controleurs;
 
-import modele.belote.JeuBelote;
 import vues.Fenetre;
 
 public abstract class BaseController {

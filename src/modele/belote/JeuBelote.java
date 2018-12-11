@@ -3,7 +3,6 @@ package modele.belote;
 import modele.cartes.CarteAJouer;
 import modele.cartes.EnseigneCarte;
 import modele.cartes.FigureCarte;
-import modele.highscores.TableauRecords;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
