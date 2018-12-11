@@ -10,7 +10,7 @@ public class Joueur {
     /**
      * @return Nom du joueur
      */
-    public String nom() {
+    public String getNom() {
         return nom;
     }
 

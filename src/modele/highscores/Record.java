@@ -42,11 +42,11 @@ public class Record {
     }
 
     /**
-     * Retourne le nom du joueur
-     * @return nom
+     * Retourne le getNom du joueur
+     * @return getNom
      */
     public String getNom() {
-        return joueur.nom();
+        return joueur.getNom();
     }
 
     /**

@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class PersistanceRecords {
 
-    private static final String HIGHSCORES = "files/highscores.txt";
+    private static final String HIGHSCORES_FILE = "files/highscores.txt";
     private static final String PATTERN    = "^(.+)\t(-?[0-9]+)\t([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2})$";
 
     /**
@@ -48,7 +48,7 @@ public class PersistanceRecords {
         ArrayList<Record> records = new ArrayList<>();
 
         try {
-            File fichierScores = new File(HIGHSCORES);
+            File fichierScores = new File(HIGHSCORES_FILE);
             if(!fichierScores.exists()) {
                 try {
                     fichierScores.getParentFile().mkdirs();
@@ -82,7 +82,7 @@ public class PersistanceRecords {
      * @param tableauRecords TableauRecords des records
      */
     public static void sauvegarder(TableauRecords tableauRecords) {
-        File file = new File(HIGHSCORES);
+        File file = new File(HIGHSCORES_FILE);
         PrintWriter writer;
 
         try {

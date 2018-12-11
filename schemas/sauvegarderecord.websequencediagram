@@ -1,14 +1,14 @@
 title Ajout d'un record
 
-Joueur->>Jeu: sauvegarder()
+Joueur->>+Jeu: sauvegarder()
 
-Jeu->Tableau: ajouter(joueur)
+Jeu->+Tableau: ajouter(joueur)
 
 opt record.size() > MAX_SCORES
     Tableau->Tableau: remove(record.size() - 1)
 end
 
-Tableau->PersistanceRecords: sauvegarder()
+Tableau->+PersistanceRecords: sauvegarder()
 
 PersistanceRecords->>File: create
 PersistanceRecords->File: fichierExiste = exists()
@@ -27,4 +27,4 @@ end
 destroy File
 destroy PrintWriter
 
-PersistanceRecords-->Tableau: records
+PersistanceRecords-->-Tableau: records
