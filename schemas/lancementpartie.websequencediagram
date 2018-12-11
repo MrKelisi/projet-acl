@@ -1,0 +1,17 @@
+title Lancement d'une partie
+
+J->MenuController: afficherFormulairePseudonyme()
+
+MenuController->Fenetre: setVue(pseudo)
+
+Fenetre->PseudoController:init()
+
+J->PseudoController: pseudonyme.setText(pseudo)
+
+J->PseudoController: afficherPlateau()
+
+PseudoController->JoueurActif: nouveau(pseudonyme)
+
+PseudoController->Fenetre: setVue(plateau)
+
+Fenetre->PlateauController: init()
