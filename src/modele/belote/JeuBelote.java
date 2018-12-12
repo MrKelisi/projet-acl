@@ -5,9 +5,10 @@ import modele.cartes.EnseigneCarte;
 import modele.cartes.FigureCarte;
 
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class JeuBelote {
+public class JeuBelote extends Observable {
     private CarteAJouer carte1;
     private CarteAJouer carte2;
     private int resultat;
@@ -57,6 +58,8 @@ public class JeuBelote {
         }
 
         resultat = res;
+        setChanged();
+        notifyObservers(this);
     }
 
     public CarteAJouer getCarte1() {

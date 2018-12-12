@@ -3,6 +3,7 @@ package controleurs;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import modele.belote.JoueurActif;
 import vues.VuePlateau;
 
 public class Plateau2Controller {
@@ -13,6 +14,9 @@ public class Plateau2Controller {
     public Plateau2Controller(Stage stage) {
         primaryStage = stage;
         vuePlateau = new VuePlateau(primaryStage);
+
+        JoueurActif.nouveau("Chris");
+        JoueurActif.getInstance().getJeu().addObserver(vuePlateau);
 
         vuePlateau.getTourSuivantBtn().setOnAction(new TourSuivantBtnHandler());
     }
@@ -29,8 +33,7 @@ public class Plateau2Controller {
 
         @Override
         public void handle(ActionEvent event) {
-            //piocherCartes();
-            System.out.println("Pressé !");
+            JoueurActif.getInstance().tirer();
         }
     }
 

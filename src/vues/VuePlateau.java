@@ -10,9 +10,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import modele.belote.JeuBelote;
+import modele.cartes.CarteAJouer;
+
+import java.util.Observable;
+import java.util.Observer;
 
 
-public class VuePlateau {
+public class VuePlateau implements Observer {
 
     private Stage primaryStage;
     private Scene scene;
@@ -66,4 +71,20 @@ public class VuePlateau {
         primaryStage.setScene(scene);
     }
 
+    private Rectangle2D getCarteCoords(CarteAJouer carte) {
+        return new Rectangle2D(carte.figure().ordinal() * 129, carte.enseigne().ordinal() * 185, 129, 185);
+    }
+
+    private void refresh(JeuBelote jeu) {
+        carte1.setViewport(getCarteCoords(jeu.getCarte1()));
+        carte2.setViewport(getCarteCoords(jeu.getCarte2()));
+        resultat.setText("" + jeu.getResultat());
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if(arg instanceof JeuBelote) {
+            refresh((JeuBelote) arg);
+        }
+    }
 }
