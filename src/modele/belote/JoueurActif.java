@@ -9,7 +9,6 @@ public class JoueurActif extends Joueur {
     private JeuBelote jeu;
     private int tour;
     private int score;
-    private ResultatTirage resultatDernierTirage;
 
     private JoueurActif(String nom) {
         super(nom);
@@ -44,13 +43,6 @@ public class JoueurActif extends Joueur {
     }
 
     /**
-     * @return Résultat du dernier tirage
-     */
-    public ResultatTirage getResultatDernierTirage() {
-        return resultatDernierTirage;
-    }
-
-    /**
      * @return Score du joueur
      */
     public int score() {
@@ -80,11 +72,19 @@ public class JoueurActif extends Joueur {
             return false;
         }
 
-        resultatDernierTirage = jeu.tirer();
-        score += resultatDernierTirage.getResultat();
+        jeu.tirer();
+
+        score += jeu.getResultat();
         tour++;
 
         return true;
+    }
+
+    /**
+     * @return Jeu associé au joueur
+     */
+    public JeuBelote getJeu() {
+        return jeu;
     }
 
     /**

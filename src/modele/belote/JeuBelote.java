@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class JeuBelote {
-
+    private CarteAJouer carte1;
+    private CarteAJouer carte2;
+    private int resultat;
     public final static int MAX_TOURS = 5;
     private static ArrayList<CarteAJouer> cartes;
 
@@ -39,14 +41,12 @@ public class JeuBelote {
      * Tire 2 cartes et retourne le résultat du tirage
      * @return Résultat du tirage
      */
-    public ResultatTirage tirer() {
-        ResultatTirage resultat = new ResultatTirage();
-
+    public void tirer() {
         int index1 = ThreadLocalRandom.current().nextInt(0, cartes.size());
         int index2 = ThreadLocalRandom.current().nextInt(0, cartes.size());
 
-        CarteAJouer carte1 = cartes.get(index1);
-        CarteAJouer carte2 = cartes.get(index2);
+        carte1 = cartes.get(index1);
+        carte2 = cartes.get(index2);
 
         int res = carte1.valeur() + carte2.valeur();
         if(carte1.figure().equals(carte2.figure())) {
@@ -56,10 +56,18 @@ public class JeuBelote {
             }
         }
 
-        resultat.setCarte1(carte1);
-        resultat.setCarte2(carte2);
-        resultat.setResultat(res);
+        resultat = res;
+    }
 
+    public CarteAJouer getCarte1() {
+        return carte1;
+    }
+
+    public CarteAJouer getCarte2() {
+        return carte2;
+    }
+
+    public int getResultat() {
         return resultat;
     }
 }

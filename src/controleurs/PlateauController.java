@@ -5,7 +5,8 @@ import javafx.animation.KeyValue;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import modele.belote.ResultatTirage;
+import modele.Joueur;
+import modele.belote.JeuBelote;
 import modele.cartes.CarteAJouer;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -81,15 +82,15 @@ public class PlateauController extends BaseController {
      * Rafraichit la scène
      */
     private void refreshScene() {
-        ResultatTirage resultatTirage = JoueurActif.getInstance().getResultatDernierTirage();
-        carte1.setViewport( getCarteCoords(resultatTirage.getCarte1()) );
-        carte2.setViewport( getCarteCoords(resultatTirage.getCarte2()) );
+        JeuBelote jeu = JoueurActif.getInstance().getJeu();
+        carte1.setViewport( getCarteCoords(jeu.getCarte1()) );
+        carte2.setViewport( getCarteCoords(jeu.getCarte2()) );
 
-        if(resultatTirage.getResultat() > 0) {
-            resultat.setText("+" + resultatTirage.getResultat());
+        if(jeu.getResultat() > 0) {
+            resultat.setText("+" + jeu.getResultat());
             resultat.setFill(Color.INDIANRED);
         } else {
-            resultat.setText(Integer.toString(resultatTirage.getResultat()));
+            resultat.setText(Integer.toString(jeu.getResultat()));
             resultat.setFill(Color.LIMEGREEN);
         }
 
