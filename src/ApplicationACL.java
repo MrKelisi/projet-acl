@@ -1,3 +1,4 @@
+import controleurs.Plateau2Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import vues.*;
@@ -16,8 +17,11 @@ public class ApplicationACL extends Application {
         fenetre.addVue("pseudo",     new VueBase("fxml/pseudo.fxml", fenetre));
         fenetre.addVue("plateau",    new VueBase("fxml/plateau.fxml", fenetre));
 
+        Plateau2Controller p2contr = new Plateau2Controller(primaryStage);
+        p2contr.show();
+
         primaryStage.setTitle("Projet ACL");
-        fenetre.setVue("menu");
+        //fenetre.setVue("menu");
         primaryStage.show();
     }
 

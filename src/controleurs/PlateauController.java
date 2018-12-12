@@ -5,7 +5,6 @@ import javafx.animation.KeyValue;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import modele.Joueur;
 import modele.belote.JeuBelote;
 import modele.cartes.CarteAJouer;
 import javafx.animation.Timeline;
