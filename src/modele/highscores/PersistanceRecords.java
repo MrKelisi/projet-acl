@@ -48,18 +48,18 @@ public class PersistanceRecords {
         ArrayList<Record> records = new ArrayList<>();
 
         try {
-            File fichierScores = new File(HIGHSCORES_FILE);
-            if(!fichierScores.exists()) {
+            File file = new File(HIGHSCORES_FILE);
+            if(!file.exists()) {
                 try {
-                    fichierScores.getParentFile().mkdirs();
-                    fichierScores.createNewFile();
+                    file.getParentFile().mkdirs();
+                    file.createNewFile();
                 }
                 catch (IOException e) {
                     e.printStackTrace();
                     return records;
                 }
             }
-            Scanner sc = new Scanner(fichierScores);
+            Scanner sc = new Scanner(file);
             while(sc.hasNextLine()) {
                 try {
                     records.add(lire(sc.nextLine()));
@@ -78,8 +78,9 @@ public class PersistanceRecords {
     }
 
     /**
-     * Sauvegarde le tableauRecords des records dans un fichier
-     * @param tableauRecords TableauRecords des records
+     * Sauvegarde le tableau des records dans un fichier
+     * @param tableauRecords Tableau des records
+     * @see TableauRecords
      */
     public static void sauvegarder(TableauRecords tableauRecords) {
         File file = new File(HIGHSCORES_FILE);

@@ -15,7 +15,7 @@
             onAction="#afficherFormulairePseudonyme"
             GridPane.rowIndex="1"
             GridPane.columnIndex="0"/>
-    <Button text="Tableau des scores"
+    <Button text="Tableau des records"
             onAction="#afficherTableauScores"
             GridPane.rowIndex="1"
             GridPane.columnIndex="1"/>

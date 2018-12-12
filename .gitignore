@@ -18,3 +18,5 @@ hs_err_pid*
 target
 out
 files/highscores.txt
+# fichiers cachés
+schemas/.*

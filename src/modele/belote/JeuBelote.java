@@ -36,7 +36,7 @@ public class JeuBelote {
     }
 
     /**
-     * Tire 2 cartes et retourne le nouvel état du joueur
+     * Tire 2 cartes et retourne le résultat du tirage
      * @return Résultat du tirage
      */
     public ResultatTirage tirer() {
@@ -51,7 +51,7 @@ public class JeuBelote {
         int res = carte1.valeur() + carte2.valeur();
         if(carte1.figure().equals(carte2.figure())) {
             res = -res;
-            if(carte1.categorie().ordinal() % 2 == carte2.categorie().ordinal() % 2) {
+            if(carte1.enseigne().ordinal() % 2 == carte2.enseigne().ordinal() % 2) {
                 res *= 2;
             }
         }

@@ -1,7 +1,7 @@
 package modele.cartes;
 
 /**
- * Figures de carte à jouer (dans un jeu de 32 cartes)
+ * Figures de carte à jouer (dans un jeu de belote)
  */
 public enum FigureCarte {
     SEPT,

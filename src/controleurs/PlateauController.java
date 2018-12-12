@@ -99,11 +99,11 @@ public class PlateauController extends BaseController {
 
     /**
      * Calcule les coordonnées de la carte désirée sur l'asset
-     * @param carte CarteAJouer désirée
-     * @return Coordonnées sur l'asset de carte
+     * @param carte La carte souhaitée
+     * @return Coordonnées sur l'asset des cartes
      */
     private Rectangle2D getCarteCoords(CarteAJouer carte) {
-        return new Rectangle2D(carte.figure().ordinal() * 129, carte.categorie().ordinal() * 185, 129, 185);
+        return new Rectangle2D(carte.figure().ordinal() * 129, carte.enseigne().ordinal() * 185, 129, 185);
     }
 
     @Override

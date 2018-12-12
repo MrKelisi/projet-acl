@@ -14,7 +14,7 @@ public class TableauRecords implements Iterable<Record> {
     private ArrayList<Record> records;
 
     /**
-     * TableauRecords des scores, chargé à partir d'un fichier
+     * Tableau des records, chargé à partir d'un fichier
      * @see PersistanceRecords
      */
     private TableauRecords() {
@@ -44,7 +44,7 @@ public class TableauRecords implements Iterable<Record> {
 
     /**
      * Retourne l'indice auquel devra être placé le record
-     * @param score du joueur
+     * @param score Score du joueur
      * @return Indice
      */
     private int getIndex(int score) {

@@ -57,10 +57,16 @@ public class JoueurActif extends Joueur {
         return score;
     }
 
+    /**
+     * @return Vrai si la partie est terminée (nombre de tours maximum atteint)
+     */
     public boolean aTermine() {
         return tour >= JeuBelote.MAX_TOURS;
     }
 
+    /**
+     * Sauvegarde le record dans le tableau des records
+     */
     public void sauvegarder() {
         TableauRecords.getInstance().ajouter(JoueurActif.getInstance());
     }
@@ -81,6 +87,9 @@ public class JoueurActif extends Joueur {
         return true;
     }
 
+    /**
+     * Supprime l'instance du joueur
+     */
     public static void reset() {
         instance = null;
     }

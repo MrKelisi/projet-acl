@@ -6,10 +6,10 @@ public class CarteAJouer {
     private EnseigneCarte enseigne;
 
     /**
-     * Crée une carte à jouer avec une valeur, une figure et une catégorie
+     * Crée une carte à jouer avec une valeur, une figure et une enseigne
      * @param valeur La valeur de la carte
      * @param figure La figure de la carte
-     * @param enseigne La catégorie de la carte
+     * @param enseigne L'enseigne de la carte
      */
     public CarteAJouer(int valeur, FigureCarte figure, EnseigneCarte enseigne) {
         this.valeur = valeur;
@@ -26,7 +26,7 @@ public class CarteAJouer {
     }
 
     /**
-     * Retourne le type de figure
+     * Retourne la figure de la carte
      * @return figure
      */
     public FigureCarte figure() {
@@ -34,10 +34,10 @@ public class CarteAJouer {
     }
 
     /**
-     * Retourne la catégorie
+     * Retourne l'enseigne de la carte
      * @return enseigne
      */
-    public EnseigneCarte categorie() {
+    public EnseigneCarte enseigne() {
         return enseigne;
     }
 

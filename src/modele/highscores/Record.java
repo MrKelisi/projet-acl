@@ -14,19 +14,19 @@ public class Record {
     private Date date;
 
     /**
-     * Crée un nouveau score à la date d'exécution
+     * Crée un nouveau record à la date d'exécution
      * @param joueur Joueur
-     * @param score Record du joueur dans la partie
+     * @param score Score du joueur dans la partie
      */
     public Record(Joueur joueur, int score) {
         this(joueur, score, new Date());
     }
 
     /**
-     * Crée un score précédemment réalisé à la Date date
+     * Crée un record précédemment réalisé à la date donnée
      * @param joueur Joueur
-     * @param score Record du joueur dans la partie
-     * @param date Date du score
+     * @param score Score du joueur dans la partie
+     * @param date Date du record
      */
     public Record(Joueur joueur, int score, Date date) {
         this.joueur = joueur;
@@ -35,15 +35,16 @@ public class Record {
     }
 
     /**
-     * @return Le joueur associé à ce record
+     * Retourne le joueur associé à ce record
+     * @return joueur
      */
     public Joueur getJoueur() {
         return joueur;
     }
 
     /**
-     * Retourne le getNom du joueur
-     * @return getNom
+     * Retourne le nom du joueur
+     * @return Nom du joueur
      */
     public String getNom() {
         return joueur.getNom();
@@ -58,7 +59,7 @@ public class Record {
     }
 
     /**
-     * Retourne la date du score
+     * Retourne la date du record
      * @return date
      */
     public Date getDate() {
@@ -66,7 +67,7 @@ public class Record {
     }
 
     /**
-     * Retourne la date formatée du score
+     * Retourne la date formatée du record
      * @return date formatée
      */
     public String getFormattedDate() {
