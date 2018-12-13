@@ -1,6 +1,8 @@
 package modele;
 
-public class Joueur {
+import java.util.Observable;
+
+public class Joueur extends Observable {
     private String nom;
 
     public Joueur(String nom) {

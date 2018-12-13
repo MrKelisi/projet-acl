@@ -14,10 +14,8 @@ public class ControleurJeu extends Controleur {
 
         vue = new VueJeu();
 
-        JoueurActif.nouveau("Patrick", vue);
-
-        vue.getAbandonnerBtn().setOnAction((event -> fenetre.setVue("menu")));
         vue.getTourSuivantBtn().setOnAction((event) -> JoueurActif.getInstance().tirer());
+        vue.getAbandonnerBtn().setOnAction((event -> fenetre.setVue("menu")));
     }
 
     @Override

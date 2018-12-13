@@ -2,7 +2,6 @@ package modele.belote;
 
 import modele.Joueur;
 import modele.highscores.TableauRecords;
-import vues.Vue;
 
 public class JoueurActif extends Joueur {
     private static JoueurActif instance;
@@ -22,9 +21,8 @@ public class JoueurActif extends Joueur {
      * Change le joueur actif
      * @param pseudonyme Nom du nouveau joueur
      */
-    public static void nouveau(String pseudonyme, Vue vue) {
+    public static void nouveau(String pseudonyme) {
         instance = new JoueurActif(pseudonyme);
-        instance.getJeu().addObserver(vue);
     }
 
     /**
@@ -32,7 +30,7 @@ public class JoueurActif extends Joueur {
      */
     public static JoueurActif getInstance() {
         if(instance == null) {
-            nouveau("Joueur", null);
+            nouveau("Joueur");
         }
         return instance;
     }
@@ -61,7 +59,7 @@ public class JoueurActif extends Joueur {
     /**
      * Sauvegarde le record dans le tableau des records
      */
-    public void sauvegarder() {
+    private void sauvegarder() {
         TableauRecords.getInstance().ajouter(JoueurActif.getInstance());
     }
 
@@ -78,6 +76,13 @@ public class JoueurActif extends Joueur {
 
         score += jeu.getResultat();
         tour++;
+
+        if(aTermine()) {
+            sauvegarder();
+        }
+
+        setChanged();
+        notifyObservers(this);
 
         return true;
     }

@@ -66,7 +66,11 @@ public class TableauRecords extends Observable implements Iterable<Record> {
      */
     public void ajouter(JoueurActif joueurActif) {
         try {
-            records.remove(findRecordOf(joueurActif));
+            Record recherche = findRecordOf(joueurActif);
+            if(recherche.getScore() <= joueurActif.score()) {
+                return;
+            }
+            records.remove(recherche);
         }
         catch (NoSuchElementException e) {
 

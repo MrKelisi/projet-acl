@@ -15,4 +15,5 @@ public abstract class Vue implements Observer {
         return scene;
     }
 
+    public void init() {}
 }

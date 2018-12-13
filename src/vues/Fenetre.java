@@ -31,6 +31,14 @@ public class Fenetre {
         vues.put(nom, vue);
     }
 
+    public Vue getVue(String nom) {
+        try {
+            return vues.get(nom);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     /**
      * Définie la vue à afficher dans la fenêtre
      * @param nom Nom usuelle de la vue à afficher
@@ -38,7 +46,7 @@ public class Fenetre {
     public void setVue(String nom) {
         try {
             Vue vue = vues.get(nom);
-            //vue.init();
+            vue.init();
             primaryStage.setScene(vue.getScene());
         } catch (Exception e) {
             e.printStackTrace();

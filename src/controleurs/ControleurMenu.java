@@ -13,7 +13,7 @@ public class ControleurMenu extends Controleur {
 
         vue = new VueMenu();
 
-        vue.getJouerBtn().setOnAction((event -> fenetre.setVue("jeu")));
+        vue.getJouerBtn().setOnAction((event -> fenetre.setVue("pseudo")));
         vue.getTableauDesRecordsBtn().setOnAction((event -> fenetre.setVue("tableau")));
         vue.getQuitterBtn().setOnAction((event) -> fenetre.fermer());
     }
