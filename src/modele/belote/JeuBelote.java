@@ -1,6 +1,6 @@
 package modele.belote;
 
-import modele.cartes.CarteAJouer;
+import modele.cartes.Carte;
 import modele.cartes.EnseigneCarte;
 import modele.cartes.FigureCarte;
 
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class JeuBelote {
-    private CarteAJouer carte1;
-    private CarteAJouer carte2;
+    private Carte carte1;
+    private Carte carte2;
     private int resultat;
     public final static int MAX_TOURS = 5;
-    private static ArrayList<CarteAJouer> cartes;
+    private static ArrayList<Carte> cartes;
 
     /**
      * Création d'un jeu de belote (32 cartes)
@@ -32,7 +32,7 @@ public class JeuBelote {
                     case AS:    valeur = 11; break;
                     default:    valeur = 0;
                 }
-                cartes.add(new CarteAJouer(valeur, figure, enseigne));
+                cartes.add(new Carte(valeur, figure, enseigne));
             }
         }
     }
@@ -62,14 +62,14 @@ public class JeuBelote {
     /**
      * @return Première carte tirée
      */
-    public CarteAJouer getCarte1() {
+    public Carte getCarte1() {
         return carte1;
     }
 
     /**
      * @return Seconde carte tirée
      */
-    public CarteAJouer getCarte2() {
+    public Carte getCarte2() {
         return carte2;
     }
 

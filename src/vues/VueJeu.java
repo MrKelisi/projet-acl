@@ -18,7 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import modele.belote.JoueurActif;
-import modele.cartes.CarteAJouer;
+import modele.cartes.Carte;
 
 import java.util.Observable;
 
@@ -128,7 +128,7 @@ public class VueJeu extends Vue {
         animations.setCycleCount(1);
     }
 
-    private Rectangle2D getCarteCoords(CarteAJouer carte) {
+    private Rectangle2D getCarteCoords(Carte carte) {
         return new Rectangle2D(carte.figure().ordinal() * 129, carte.enseigne().ordinal() * 185, 129, 185);
     }
 

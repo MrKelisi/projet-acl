@@ -1,6 +1,6 @@
 package modele.cartes;
 
-public class CarteAJouer {
+public class Carte {
     private int valeur;
     private FigureCarte figure;
     private EnseigneCarte enseigne;
@@ -11,7 +11,7 @@ public class CarteAJouer {
      * @param figure La figure de la carte
      * @param enseigne L'enseigne de la carte
      */
-    public CarteAJouer(int valeur, FigureCarte figure, EnseigneCarte enseigne) {
+    public Carte(int valeur, FigureCarte figure, EnseigneCarte enseigne) {
         this.valeur = valeur;
         this.figure = figure;
         this.enseigne = enseigne;
