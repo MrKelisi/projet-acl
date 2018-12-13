@@ -1,4 +1,6 @@
-import controleurs.Plateau2Controller;
+import controleurs.ControleurJeu;
+import controleurs.ControleurMenu;
+import controleurs.ControleurTableau;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import vues.*;
@@ -12,16 +14,17 @@ public class ApplicationACL extends Application {
     public void start(Stage primaryStage) {
         Fenetre fenetre = new Fenetre(primaryStage);
 
-        fenetre.addVue("menu",       new VueBase("fxml/menu.fxml", fenetre));
-        fenetre.addVue("highscores", new VueBase("fxml/highscores.fxml", fenetre));
-        fenetre.addVue("pseudo",     new VueBase("fxml/pseudo.fxml", fenetre));
-        fenetre.addVue("plateau",    new VueBase("fxml/plateau.fxml", fenetre));
+        ControleurMenu    controleurMenu    = new ControleurMenu(fenetre);
+        ControleurJeu     controleurJeu     = new ControleurJeu(fenetre);
+        ControleurTableau controleurTableau = new ControleurTableau(fenetre);
 
-        Plateau2Controller p2contr = new Plateau2Controller(primaryStage);
-        p2contr.show();
+        fenetre.addVue("menu",    controleurMenu.getVue());
+        fenetre.addVue("jeu",     controleurJeu.getVue());
+        fenetre.addVue("tableau", controleurTableau.getVue());
+
+        fenetre.setVue("menu");
 
         primaryStage.setTitle("Projet ACL");
-        //fenetre.setVue("menu");
         primaryStage.show();
     }
 
