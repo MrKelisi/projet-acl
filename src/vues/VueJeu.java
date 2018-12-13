@@ -120,10 +120,10 @@ public class VueJeu extends Vue {
                 new KeyFrame(Duration.ZERO, new KeyValue(carte1.scaleYProperty(), 1.1)),
                 new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleXProperty(), 0)),
                 new KeyFrame(Duration.ZERO, new KeyValue(carte2.scaleYProperty(), 1.1)),
-                new KeyFrame(new Duration(100), new KeyValue(carte1.scaleXProperty(), 1)),
-                new KeyFrame(new Duration(100), new KeyValue(carte1.scaleYProperty(), 1)),
-                new KeyFrame(new Duration(100), new KeyValue(carte2.scaleXProperty(), 1)),
-                new KeyFrame(new Duration(100), new KeyValue(carte2.scaleYProperty(), 1))
+                new KeyFrame(new Duration(120), new KeyValue(carte1.scaleXProperty(), 1)),
+                new KeyFrame(new Duration(120), new KeyValue(carte1.scaleYProperty(), 1)),
+                new KeyFrame(new Duration(120), new KeyValue(carte2.scaleXProperty(), 1)),
+                new KeyFrame(new Duration(120), new KeyValue(carte2.scaleYProperty(), 1))
         );
         animations.setCycleCount(1);
     }
@@ -165,8 +165,8 @@ public class VueJeu extends Vue {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg instanceof JoueurActif) {
-            refresh((JoueurActif) arg);
+        if(o instanceof JoueurActif) {
+            refresh((JoueurActif) o);
         }
     }
 }

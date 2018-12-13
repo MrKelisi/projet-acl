@@ -19,7 +19,7 @@ public class Fenetre {
     }
 
     /**
-     * Ajoute une vue à la fenêtre et l'associe à un getNom
+     * Ajoute une vue à la fenêtre et l'associe à un nom
      * @param nom Nom usuelle de la vue
      * @param vue Une vue de la fenêtre
      */
@@ -31,6 +31,11 @@ public class Fenetre {
         vues.put(nom, vue);
     }
 
+    /**
+     * Retourne la vue associée au nom demandé
+     * @param nom Nom usuelle de la vue
+     * @return La vue demandée
+     */
     public Vue getVue(String nom) {
         try {
             return vues.get(nom);
