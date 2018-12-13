@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import modele.belote.JeuBelote;
 import modele.cartes.CarteAJouer;
 
@@ -17,18 +16,16 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class VuePlateau implements Observer {
-
-    private Stage primaryStage;
-    private Scene scene;
+public class VueJeu extends Vue implements Observer {
 
     private ImageView carte1;
     private ImageView carte2;
     private Text resultat;
 
     private Button tourSuivant;
+    private Button abandonner;
 
-    public VuePlateau(Stage stage) {
+    public VueJeu() {
 
         GridPane mainGrid = new GridPane();
         mainGrid.setAlignment(Pos.CENTER);
@@ -58,17 +55,18 @@ public class VuePlateau implements Observer {
         tourSuivant = new Button("Tour suivant");
         mainGrid.add(tourSuivant, 0, 1);
 
+        abandonner = new Button("Abandonner");
+        mainGrid.add(abandonner, 1, 1);
 
-        primaryStage = stage;
-        scene = new Scene(mainGrid, 600, 450);
+        scene = new Scene(mainGrid, WIDTH, HEIGHT);
     }
 
     public Button getTourSuivantBtn() {
         return tourSuivant;
     }
 
-    public void show() {
-        primaryStage.setScene(scene);
+    public Button getAbandonnerBtn() {
+        return abandonner;
     }
 
     private Rectangle2D getCarteCoords(CarteAJouer carte) {

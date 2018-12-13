@@ -6,8 +6,9 @@ import modele.belote.JoueurActif;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Observable;
 
-public class TableauRecords implements Iterable<Record> {
+public class TableauRecords extends Observable implements Iterable<Record> {
     private static final int MAX_SCORES = 10;
     private static TableauRecords instance;
 
@@ -72,6 +73,8 @@ public class TableauRecords implements Iterable<Record> {
         }
 
         records.add(getIndex(joueurActif.score()), new Record(joueurActif, joueurActif.score()));
+        setChanged();
+        notifyObservers();
 
         if(records.size() > MAX_SCORES) {
             records.remove(records.size() - 1);

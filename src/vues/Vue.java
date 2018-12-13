@@ -1,21 +1,16 @@
 package vues;
 
-import controleurs.BaseController;
 import javafx.scene.Scene;
 
-public interface Vue {
-    int WIDTH = 600;
-    int HEIGHT = 450;
+public abstract class Vue {
 
-    /**
-     * Retoune la scène de la vue
-     * @return scene
-     */
-    Scene getScene();
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 450;
 
-    /**
-     * Retourne le controleur associé à la vue
-     * @return controller
-     */
-    BaseController getControleur();
+    protected Scene scene;
+
+    public Scene getScene() {
+        return scene;
+    }
+
 }

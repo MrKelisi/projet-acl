@@ -5,7 +5,8 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 
 public class Fenetre {
-    private Stage stage;
+
+    private Stage primaryStage;
     private HashMap<String, Vue> vues;
 
     /**
@@ -13,7 +14,7 @@ public class Fenetre {
      * @param stage Stage de la fenêtre
      */
     public Fenetre(Stage stage) {
-        this.stage = stage;
+        primaryStage = stage;
         vues = new HashMap<>();
     }
 
@@ -37,11 +38,11 @@ public class Fenetre {
     public void setVue(String nom) {
         try {
             Vue vue = vues.get(nom);
-            vue.getControleur().init();
-            stage.setScene(vue.getScene());
+            //vue.init();
+            primaryStage.setScene(vue.getScene());
         } catch (Exception e) {
             e.printStackTrace();
-            stage.close();
+            primaryStage.close();
         }
     }
 
@@ -49,6 +50,6 @@ public class Fenetre {
      * Ferme la fenêtre
      */
     public void fermer() {
-        stage.close();
+        primaryStage.close();
     }
 }
