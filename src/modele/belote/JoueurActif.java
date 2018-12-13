@@ -94,10 +94,4 @@ public class JoueurActif extends Joueur {
         return jeu;
     }
 
-    /**
-     * Supprime l'instance du joueur
-     */
-    public static void reset() {
-        instance = null;
-    }
 }
