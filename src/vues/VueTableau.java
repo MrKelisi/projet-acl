@@ -11,11 +11,10 @@ import javafx.scene.text.TextAlignment;
 import modele.highscores.TableauRecords;
 
 import java.util.Observable;
-import java.util.Observer;
 
 import static javafx.scene.control.TableView.CONSTRAINED_RESIZE_POLICY;
 
-public class VueTableau extends Vue implements Observer {
+public class VueTableau extends Vue {
 
     private Button menuPrincipal;
 

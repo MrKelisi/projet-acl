@@ -8,6 +8,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+import java.util.Observable;
+
 public class VueMenu extends Vue {
 
     private Button jouer;
@@ -50,4 +52,8 @@ public class VueMenu extends Vue {
         return quitter;
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
 }

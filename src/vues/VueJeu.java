@@ -1,26 +1,32 @@
 package vues;
 
+import javafx.geometry.HPos;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import modele.belote.JeuBelote;
+import modele.belote.JoueurActif;
 import modele.cartes.CarteAJouer;
 
 import java.util.Observable;
-import java.util.Observer;
 
 
-public class VueJeu extends Vue implements Observer {
+public class VueJeu extends Vue {
 
     private ImageView carte1;
     private ImageView carte2;
     private Text resultat;
+    private Text tour;
+    private Text score;
 
     private Button tourSuivant;
     private Button abandonner;
@@ -29,7 +35,7 @@ public class VueJeu extends Vue implements Observer {
 
         GridPane mainGrid = new GridPane();
         mainGrid.setAlignment(Pos.CENTER);
-        mainGrid.setHgap(15);
+        mainGrid.setVgap(15);
 
         GridPane topGrid = new GridPane();
         topGrid.setAlignment(Pos.CENTER);
@@ -52,11 +58,38 @@ public class VueJeu extends Vue implements Observer {
         resultat.setFont(Font.font(24));
         topGrid.add(resultat, 1, 0);
 
+        //-------------------------------------------------------------------------------------------------------
+
+        FlowPane middlePane = new FlowPane();
+        middlePane.setAlignment(Pos.CENTER);
+        middlePane.setOrientation(Orientation.VERTICAL);
+        middlePane.setColumnHalignment(HPos.CENTER);
+        middlePane.setPrefWrapLength(Double.NaN);
+        middlePane.setVgap(5);
+        mainGrid.add(middlePane,0,1);
+
+        tour = new Text("Tour n°0");
+        tour.setFont(Font.font(14));
+        tour.setFill(Color.valueOf("0e61ff"));
+        middlePane.getChildren().add(tour);
+
+        score = new Text("Votre score : 0");
+        score.setFont(Font.font(17));
+        score.setFill(Color.valueOf("0e61ff"));
+        middlePane.getChildren().add(score);
+
+        //-------------------------------------------------------------------------------------------------------
+
+        GridPane bottomGrid = new GridPane();
+        bottomGrid.setAlignment(Pos.CENTER);
+        bottomGrid.setHgap(20);
+        mainGrid.add(bottomGrid, 0, 2);
+
         tourSuivant = new Button("Tour suivant");
-        mainGrid.add(tourSuivant, 0, 1);
+        bottomGrid.add(tourSuivant, 0, 0);
 
         abandonner = new Button("Abandonner");
-        mainGrid.add(abandonner, 1, 1);
+        bottomGrid.add(abandonner, 1, 0);
 
         scene = new Scene(mainGrid, WIDTH, HEIGHT);
     }
@@ -77,6 +110,8 @@ public class VueJeu extends Vue implements Observer {
         carte1.setViewport(getCarteCoords(jeu.getCarte1()));
         carte2.setViewport(getCarteCoords(jeu.getCarte2()));
         resultat.setText("" + jeu.getResultat());
+        tour.setText("Tour n°" + JoueurActif.getInstance().tour());
+        score.setText("Votre score : " + JoueurActif.getInstance().score());
     }
 
     @Override

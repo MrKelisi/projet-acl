@@ -2,7 +2,9 @@ package vues;
 
 import javafx.scene.Scene;
 
-public abstract class Vue {
+import java.util.Observer;
+
+public abstract class Vue implements Observer {
 
     public static final int WIDTH = 600;
     public static final int HEIGHT = 450;
