@@ -82,7 +82,7 @@ public class JoueurActif extends Joueur {
         }
 
         setChanged();
-        notifyObservers(this);
+        notifyObservers();
 
         return true;
     }

@@ -11,9 +11,15 @@ public abstract class Vue implements Observer {
 
     protected Scene scene;
 
+    /**
+     * @return La scène de la vue
+     */
     public Scene getScene() {
         return scene;
     }
 
+    /**
+     * Initialise la vue
+     */
     public void init() {}
 }

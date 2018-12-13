@@ -11,6 +11,9 @@ public abstract class Controleur {
         fenetrePrincipale = fenetre;
     }
 
+    /**
+     * Retourne la vue associée à ce controleur
+     */
     public abstract Vue getVue();
 
 }

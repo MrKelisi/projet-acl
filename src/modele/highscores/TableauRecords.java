@@ -33,6 +33,11 @@ public class TableauRecords extends Observable implements Iterable<Record> {
         return instance;
     }
 
+    /**
+     * Cherche un record dans le tableau
+     * @param joueur Nom du joueur à chercher
+     * @return Le record du joueur s'il existe
+     */
     public Record findRecordOf(Joueur joueur) {
         for(Record record : records) {
             if(record.getJoueur().equals(joueur)) {
