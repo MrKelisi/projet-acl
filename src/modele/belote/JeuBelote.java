@@ -62,14 +62,23 @@ public class JeuBelote extends Observable {
         notifyObservers(this);
     }
 
+    /**
+     * @return Première carte tirée
+     */
     public CarteAJouer getCarte1() {
         return carte1;
     }
 
+    /**
+     * @return Seconde carte tirée
+     */
     public CarteAJouer getCarte2() {
         return carte2;
     }
 
+    /**
+     * @return Résultat du tirage
+     */
     public int getResultat() {
         return resultat;
     }
