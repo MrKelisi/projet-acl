@@ -1,6 +1,6 @@
 title Ajout d'un record
 
-Joueur->+TableauRecords: ajouter(joueur)
+JoueurActif->+TableauRecords: ajouter(joueur)
 
 opt record.size() > MAX_SCORES
     TableauRecords->TableauRecords: remove(record.size() - 1)
@@ -20,6 +20,12 @@ PersistanceRecords->PrintWriter: create
 
 loop record in Tableau
     PersistanceRecords->PrintWriter: write(record.nom, record.score, record.date)
+end
+
+deactivate PersistanceRecords
+
+loop observer in observers
+    TableauRecords->"observer: Observer": update(tableau)
 end
 
 destroy File

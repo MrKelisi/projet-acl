@@ -82,14 +82,15 @@ public class TableauRecords extends Observable implements Iterable<Record> {
         }
 
         records.add(getIndex(joueurActif.score()), new Record(joueurActif, joueurActif.score()));
-        setChanged();
-        notifyObservers();
 
         if(records.size() > MAX_SCORES) {
             records.remove(records.size() - 1);
         }
 
         PersistanceRecords.sauvegarder(this);
+
+        setChanged();
+        notifyObservers();
     }
 
     @Override

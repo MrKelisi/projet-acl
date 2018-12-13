@@ -1,35 +1,31 @@
 title Déroulement d'une partie
 
 loop i=1…5
-    J->>+PlateauController:piocherCartes()
+    ""->>+ControleurJeu:piocherCartes()
 
-    PlateauController->+Joueur: tirer()
+    ControleurJeu->+Joueur: tirer()
 
-    Joueur->+"jeu: Jeu": tirer()
-    "jeu: Jeu"->>"resultat: ResultatTirage": create
-    "jeu: Jeu"->"resultat: ResultatTirage": setCarte1(carte1)
-    "jeu: Jeu"->"resultat: ResultatTirage": setCarte2(carte2)
-    "jeu: Jeu"->"resultat: ResultatTirage": setResultat(res)
-    "jeu: Jeu"-->-"Joueur": resultat
+    Joueur->"jeu: Jeu": tirer()
 
+    Joueur->+VueJeu: update(joueur)
+    VueJeu->Joueur: jeu = getJeu()
+    VueJeu->"jeu: Jeu": getCarte1()
+    VueJeu->"jeu: Jeu": getCarte2()
+    VueJeu->"jeu: Jeu": getResultat()
+    VueJeu->Joueur: getScore()
+    VueJeu->Joueur: getTour()
+
+    deactivate VueJeu
     deactivate Joueur
 
-    PlateauController->+PlateauController: refreshScene()
-    PlateauController->Joueur: resultat = getResultat()
-    PlateauController->"resultat: ResultatTirage": getCarte1()
-    PlateauController->"resultat: ResultatTirage": getCarte2()
-    PlateauController->"resultat: ResultatTirage": getResultat()
-    deactivate PlateauController
-
     opt i < 5
-        PlateauController-->J:
+        ControleurJeu-->"":
     end
 end
 
-PlateauController->Joueur: sauvegarder()
-deactivate PlateauController
-J->>PlateauController: afficherMenuPrincipal()
+ControleurJeu->Joueur: sauvegarder()
+deactivate ControleurJeu
+""->>ControleurJeu: afficherMenuPrincipal()
 
-destroy "resultat: ResultatTirage"
 destroy "jeu: Jeu"
 destroy Joueur
